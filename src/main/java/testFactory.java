@@ -39,6 +39,8 @@ public class testFactory extends Component implements EntityFactory {
                 .viewWithBBox("link.png")
                 .type(testTypes.PLAYER)
                 .with(new CollidableComponent(true))
+		.with(new HealthIntComponent(10))
+		.with(new playerComponent())
                 .build();
     }
 
