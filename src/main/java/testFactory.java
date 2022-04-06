@@ -36,7 +36,7 @@ public class testFactory extends Component implements EntityFactory {
     @Spawns("player")
     public Entity newPlayer(SpawnData data){
         return FXGL.entityBuilder(data)
-                .viewWithBBox(new Rectangle(30,30, Color.BLUE))
+                .viewWithBBox("link.png")
                 .type(testTypes.PLAYER)
                 .with(new CollidableComponent(true))
                 .build();

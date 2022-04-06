@@ -90,7 +90,7 @@ public class testApp extends GameApplication {
         player = FXGL.getGameWorld().spawn("player", 500,-20);
         monster = FXGL.getGameWorld().spawn("monster",-30,-30);
         objects = FXGL.getGameWorld().getEntitiesByType(testTypes.FOREST);
-
+        FXGL.play("intromusic.wav");
         FXGL.getGameScene().getViewport().bindToEntity(player, width/2, height/2);
     }
 
