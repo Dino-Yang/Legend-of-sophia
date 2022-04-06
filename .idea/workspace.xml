@@ -4,7 +4,37 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="935beec7-b7ce-41c4-973c-b429a1d7310b" name="Changes" comment="" />
+    <list default="true" id="935beec7-b7ce-41c4-973c-b429a1d7310b" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/levels/grassfield.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/levels/idc.tmx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/levels/level1.tmx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UML/TheLegendOfSophia_ActivityDiagram.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-05-Apr-2022-21.45.51.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-05-Apr-2022-21.46.17.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-05-Apr-2022-21.51.34.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-05-Apr-2022-21.52.06.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-05-Apr-2022-21.52.45.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-05-Apr-2022-21.53.04.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-05-Apr-2022-21.54.45.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-05-Apr-2022-21.55.09.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-05-Apr-2022-21.55.23.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-05-Apr-2022-21.55.43.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/battleScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/battleScene.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/testApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/testApp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/testFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/testFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/testTypes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/testTypes.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/levels/tiles-spritesheet.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/levels/tiles-spritesheet.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/assets/levels/tiles-spritesheet.png" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/assets/levels/tiles-spritesheet.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/battleScene.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/battleScene.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/monsterComponent.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/monsterComponent.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/player.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/player.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/testApp$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/testApp$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/testApp.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/testApp.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/testFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/testFactory.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/testTypes.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/testTypes.class" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -28,7 +58,38 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources/assets/levels" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\rickl\OneDrive - Hogeschool Leiden\propedeuse\Github\sophia\src\main\resources\assets\levels" />
+      <recent name="C:\Users\rickl\OneDrive - Hogeschool Leiden\propedeuse\Github\sophia\src\main\resources\assets\textures" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\rickl\OneDrive - Hogeschool Leiden\propedeuse\Github\sophia\src\main\resources\assets\levels" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.testApp">
+    <configuration name="Game" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Game" />
+      <module name="sophia" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="testApp" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="testApp" />
+      <module name="sophia" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.testApp" />
+        <item itemvalue="Application.Game" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -40,5 +101,16 @@
       <updated>1649157818522</updated>
     </task>
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>
