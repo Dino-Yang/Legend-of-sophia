@@ -76,7 +76,7 @@ public class testApp extends GameApplication {
             // order of types is the same as passed into the constructor
             @Override
             protected void onCollisionBegin(Entity player, Entity monster) {
-                FXGL.getSceneService().pushSubScene(new battleScene());
+                FXGL.getSceneService().pushSubScene(new battleScene(player, monster));
             }
         });
     }
@@ -85,8 +85,8 @@ public class testApp extends GameApplication {
     protected void initGame(){
 
         FXGL.getGameWorld().addEntityFactory(new testFactory());
-        FXGL.setLevelFromMap("test.tmx");
-        FXGL.getGameScene().setBackgroundRepeat("grassfield.png");
+        FXGL.setLevelFromMap("level1.tmx");
+//        FXGL.getGameScene().setBackgroundRepeat("grassfield.png");
         player = FXGL.getGameWorld().spawn("player", 500,-20);
         monster = FXGL.getGameWorld().spawn("monster",-30,-30);
         objects = FXGL.getGameWorld().getEntitiesByType(testTypes.FOREST);

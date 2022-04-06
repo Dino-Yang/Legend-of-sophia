@@ -1,4 +1,5 @@
 import com.almasb.fxgl.dsl.FXGL;
+import com.almasb.fxgl.dsl.components.HealthIntComponent;
 import com.almasb.fxgl.entity.Entity;
 import com.almasb.fxgl.entity.EntityFactory;
 import com.almasb.fxgl.entity.SpawnData;
@@ -12,14 +13,23 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
 
-public class testFactory implements EntityFactory {
+public class testFactory extends Component implements EntityFactory {
 
+//
+//    @Spawns("obstacle")
+//    public Entity newObstacle(SpawnData data){
+//        return FXGL.entityBuilder(data)
+//                .bbox(new HitBox(BoundingShape.box(data.<Integer>get("width"),data.<Integer>get("height"))))
+//                .type(testTypes.OBSTACLE)
+//                .build();
+//    }
 
-    @Spawns("forest")
+    @Spawns("obstacle")
     public Entity newForest(SpawnData data){
         return FXGL.entityBuilder(data)
                 .bbox(new HitBox(BoundingShape.box(data.<Integer>get("width"),data.<Integer>get("height"))))
                 .type(testTypes.FOREST)
+                .with(new CollidableComponent(true))
                 .build();
     }
 
@@ -39,6 +49,7 @@ public class testFactory implements EntityFactory {
                 .type(testTypes.MONSTER)
                 .with(new CollidableComponent(true))
                 .with(new monsterComponent())
+                .with(new HealthIntComponent(10))
                 .build();
     }
 }
