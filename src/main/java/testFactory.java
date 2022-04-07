@@ -86,7 +86,7 @@ public class testFactory extends Component implements EntityFactory {
     @Spawns("chicken")
     public Entity newchicken(SpawnData data){
         return FXGL.entityBuilder(data)
-                .viewWithBBox("monster.png")
+                .viewWithBBox("chicken.png")
                 .type(testTypes.MONSTER)
                 .with(new CollidableComponent(true))
                 .with(new monsterComponent())

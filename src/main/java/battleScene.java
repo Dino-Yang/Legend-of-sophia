@@ -34,7 +34,7 @@ public class battleScene extends SubScene {
         monster = monster1;
         monster1.removeFromWorld();
 
-        Texture monsterImage = FXGL.getAssetLoader().loadTexture("monsterBattle.png");
+        Texture monsterImage = FXGL.getAssetLoader().loadTexture("chicken.png");
         Texture playerImage = FXGL.getAssetLoader().loadTexture("heiko.png");
         int width = FXGL.getAppWidth();
         int height = FXGL.getAppHeight();

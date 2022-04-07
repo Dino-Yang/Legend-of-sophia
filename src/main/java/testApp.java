@@ -36,6 +36,8 @@ public class testApp extends GameApplication {
     protected void initSettings(GameSettings settings) {
         settings.setWidth(width);
         settings.setHeight(height);
+        settings.setMainMenuEnabled(true);
+        settings.setSceneFactory(new UIfactory());
         settings.setTitle("Basic Game App");
         settings.setVersion("0.1");
     }
@@ -111,9 +113,9 @@ public class testApp extends GameApplication {
             // order of types is the same as passed into the constructor
             @Override
             protected void onCollisionBegin(Entity player, Entity monster) {
-                levelSwap = true;
-                FXGL.setLevelFromMap("eindlevel.tmx");
-//                FXGL.getSceneService().pushSubScene(new battleScene(player, monster));
+//                levelSwap = true;
+//                FXGL.setLevelFromMap("eindlevel.tmx");
+                FXGL.getSceneService().pushSubScene(new battleScene(player, monster));
             }
         });
 
