@@ -13,6 +13,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 
+/*
+todo
+2 player
+battle(crit change dodge chance)
+potion drop(on enemy death)
+battle text;
+level swap tussen levels
+main menu to playeraantal select to name input
+dino sprite vinden(argh)
+*/
+
 public class testApp extends GameApplication {
     public static Entity player;
     public static List<Entity> objects;
@@ -143,7 +154,6 @@ public class testApp extends GameApplication {
         FXGL.getGameWorld().addEntityFactory(new testFactory());
         FXGL.setLevelFromMap("level1.tmx");
         player = FXGL.getGameWorld().getSingleton(testTypes.PLAYER);
-        monster = FXGL.getGameWorld().spawn("monster",-30,-30);
         objects = FXGL.getGameWorld().getEntitiesByType(testTypes.FOREST,testTypes.TREEDESPAWN);
         FXGL.play("intromusic.wav");
         FXGL.getGameScene().getViewport().bindToEntity(player, width/2, height/2);
