@@ -91,7 +91,7 @@ public class MainMenu extends FXGLMenu {
         VBox playersMenu = new VBox(2);
         playersMenu.setSpacing(20);
         playersMenu.getChildren().addAll(menuTweeTitel, onePlayer, twoPlayer, spacer2);
-        playersMenu.setAlignment(Pos.BOTTOM_CENTER);
+        playersMenu.setAlignment(Pos.CENTER);
         playersMenu.setMinHeight(height);
         playersMenu.setMinWidth(width);
         playersMenu.setBackground(new Background(mainBackground));
@@ -110,9 +110,9 @@ public class MainMenu extends FXGLMenu {
         Button startButton = new Button("Start");
 
         startButton.setMinSize(150, 100);
-        startButton.setStyle("-fx-background-color: #1a2739");
+//        startButton.setStyle("-fx-background-color: #1a2739");
         exitButton.setMinSize(150, 100);
-        exitButton.setStyle("-fx-background-color: #1a2739");
+//        exitButton.setStyle("-fx-background-color: #1a2739");
 
         VBox mainMenu = new VBox(2);
         mainMenu.setSpacing(20);
