@@ -34,7 +34,7 @@ public class testApp extends GameApplication {
     private int width = 1280;
     private int height = 720;
     public boolean levelSwap = false;
-    public static boolean twoPlayers = false;
+    public static boolean twoPlayers = true;
 
     @Override
     protected void initSettings(GameSettings settings) {

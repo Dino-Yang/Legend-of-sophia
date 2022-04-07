@@ -11,6 +11,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Font;
 import javafx.util.Duration;
 
 import java.util.Objects;
@@ -33,6 +34,7 @@ public class battleScene extends SubScene {
     HealthIntComponent playerHP;
     HealthIntComponent player2HP;
     HBox potionBox = new HBox();
+    Label text = new Label();
 
 
     public battleScene(Entity player1,Entity player2, Entity monster1) {
@@ -75,7 +77,7 @@ public class battleScene extends SubScene {
         HBox.setHgrow(filler, Priority.ALWAYS);
         HBox.setHgrow(filler2, Priority.ALWAYS);
 
-        //setup view of the battle
+        //setup battle view
         playerBox.getChildren().add(playerImage);
         playerBox.getChildren().add(playerHPBar);
         if (testApp.twoPlayers){
@@ -115,10 +117,20 @@ public class battleScene extends SubScene {
         itemBtn.setPrefSize(200, 100);
 
         //potion menu
-
         //add buttons and potions to the VBox
         vBox.getChildren().add(menuBox);
         vBox.getChildren().add(potionBox);
+        HBox textBox = new HBox();
+        Region textHulp1 = new Region();
+        Region textHulp2 = new Region();
+        HBox.setHgrow(textHulp1, Priority.ALWAYS);
+        HBox.setHgrow(textHulp2, Priority.ALWAYS);
+        text.setFont(new Font("Arial", 40));
+        textBox.getChildren().add(textHulp1);
+        textBox.getChildren().add(text);
+        textBox.getChildren().add(textHulp2);
+        vBox.getChildren().add(textBox);
+        potionBox.managedProperty().bind(potionBox.visibleProperty());
         potionBox.setVisible(false);
         stackPane.getChildren().add(vBox);
         this.getContentRoot().getChildren().add(stackPane);
@@ -155,6 +167,8 @@ public class battleScene extends SubScene {
         var playerChoice = player.getComponent(HealthIntComponent.class);
         if (playerTurn) {
             potionBox.setVisible(false);
+            text.setText(player.getComponent(playerComponent.class).naam + " used " + pot.getNaam() +
+                    " and healed for "+pot.getHealAmount()+" hp!");
             playerChoice.setValue(playerChoice.getValue() + pot.getHealAmount());
             //can't heal more than max hp
             if (playerChoice.getValue() > 20) {
@@ -171,23 +185,27 @@ public class battleScene extends SubScene {
             if (pot.getCount() == 0) {
                 player.getComponent(playerComponent.class).potionList.remove(pot);
             }
-            if (whoseTurn == 2 && testApp.twoPlayers){
-                whoseTurn = 1;
-                this.playerTurn = false;
-                monsterAttack();
-            }else if (!testApp.twoPlayers){
-                this.playerTurn = false;
-                monsterAttack();
-            }else{
-                whoseTurn = 2;
-            }
+            turnChooser();
+        }
+    }
+
+    public void turnChooser(){
+        if (whoseTurn == 2 && testApp.twoPlayers){
+            whoseTurn = 1;
+            this.playerTurn = false;
+            monsterAttack();
+        }else if (!testApp.twoPlayers){
+            this.playerTurn = false;
+            monsterAttack();
+        }else{
+            whoseTurn = 2;
         }
     }
 
     public void attack(StackPane stackPane, Entity player) {
         if (playerTurn) {
-            System.out.println(player.getComponent(playerComponent.class).damage);
             potionBox.setVisible(false);
+            text.setText(player.getComponent(playerComponent.class).naam + " attacked and did " + player.getComponent(playerComponent.class).damage +" damage!");
             monsterHP.setValue(monsterHP.getValue() - player.getComponent(playerComponent.class).damage);
             monsterHPBar.setCurrentValue(monsterHP.getValue());
             if (monsterHP.getValue() <= 0) {
@@ -196,16 +214,7 @@ public class battleScene extends SubScene {
                 }
                 close(stackPane);
             }else {
-                if (whoseTurn == 2 && testApp.twoPlayers){
-                    whoseTurn = 1;
-                    this.playerTurn = false;
-                    monsterAttack();
-                }else if (!testApp.twoPlayers){
-                    this.playerTurn = false;
-                    monsterAttack();
-                }else{
-                    whoseTurn = 2;
-                }
+                turnChooser();
             }
         }
     }
