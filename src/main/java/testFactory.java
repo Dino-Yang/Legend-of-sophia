@@ -67,7 +67,7 @@ public class testFactory extends Component implements EntityFactory {
     @Spawns("pathBlock")
     public Entity newpathBlock(SpawnData data){
         return FXGL.entityBuilder(data)
-//                .viewWithBBox("tree.png")
+                .viewWithBBox("tree.png")
                 .type(testTypes.TREEDESPAWN)
                 .with(new CollidableComponent(true))
                 .build();
