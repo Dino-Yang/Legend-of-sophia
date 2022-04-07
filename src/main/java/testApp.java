@@ -155,7 +155,10 @@ public class testApp extends GameApplication {
         }
         if (levelSwap) {
             objects = FXGL.getGameWorld().getEntitiesByType(testTypes.FOREST,testTypes.TREEDESPAWN);
-            testApp.player = FXGL.getGameWorld().getSingleton(testTypes.PLAYER);
+            player = FXGL.getGameWorld().getSingleton(testTypes.PLAYER);
+            if (twoPlayers){
+                player2 = FXGL.getGameWorld().getSingleton(testTypes.PLAYERTWO);
+            }
             FXGL.getGameScene().getViewport().bindToEntity(player, width/2, height/2);
             FXGL.getGameScene().getViewport().setZoom(1.8);
             levelSwap = false;

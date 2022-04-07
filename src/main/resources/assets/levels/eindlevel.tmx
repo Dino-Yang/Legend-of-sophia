@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="50" height="40" tilewidth="32" tileheight="32" infinite="0" nextlayerid="6" nextobjectid="45">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="50" height="40" tilewidth="32" tileheight="32" infinite="0" nextlayerid="6" nextobjectid="46">
  <editorsettings>
   <export format="tmx"/>
  </editorsettings>
  <tileset firstgid="1" name="tiles-spritesheet" tilewidth="32" tileheight="32" spacing="2" tilecount="2898" columns="63">
-  <image source="../../../../../../../../Downloads/tiles-spritesheet.png" trans="ff00ff" width="2144" height="1568"/>
+  <image source="tiles-spritesheet.png" trans="ff00ff" width="2144" height="1568"/>
  </tileset>
  <tileset firstgid="2899" name="tiles-spritesheet" tilewidth="32" tileheight="32" tilecount="3283" columns="67">
-  <image source="../../../../../../../../Downloads/tiles-spritesheet.png" trans="ff00ff" width="2144" height="1568"/>
+  <image source="tiles-spritesheet.png" trans="ff00ff" width="2144" height="1568"/>
  </tileset>
  <layer id="1" name="Tile Layer 1" width="50" height="40">
   <data encoding="csv">
@@ -169,7 +169,7 @@
 0,0,0,3242,3243,3244,3245,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3305,3306,3307,3308,0,0,0,0,
 0,0,0,3309,3310,3311,3312,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3372,3373,3374,3375,0,0,0,0,
 0,0,0,3376,3377,3378,3379,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3439,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -234,6 +234,8 @@
   <object id="42" type="player" x="382.799" y="882.88">
    <point/>
   </object>
-  <object id="44" type="npc" x="766.812" y="825.588" width="32.8048" height="38.2723"/>
+  <object id="45" type="player2" x="426.667" y="885.333">
+   <point/>
+  </object>
  </objectgroup>
 </map>
