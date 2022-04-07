@@ -47,8 +47,19 @@ public class testFactory extends Component implements EntityFactory {
     public Entity newStoneDespawn(SpawnData data){
         return FXGL.entityBuilder(data)
                 .bbox(new HitBox(BoundingShape.box(data.<Integer>get("width"),data.<Integer>get("height"))))
-                .type(testTypes.FOREST)
+                .type(testTypes.STONEDESPAWN)
                 .with(new CollidableComponent(true))
+                .build();
+    }
+
+    @Spawns("eindbaas")
+    public Entity newEindbaas(SpawnData data){
+        return FXGL.entityBuilder(data)
+                .viewWithBBox("heiko.png")
+                .type(testTypes.EINDBAAS)
+                .with(new CollidableComponent(true))
+                .with(new monsterComponent("heiko",8, 30))
+                .with(new HealthIntComponent(30))
                 .build();
     }
 
@@ -60,7 +71,7 @@ public class testFactory extends Component implements EntityFactory {
                 .type(testTypes.PLAYER)
                 .with((new CollidableComponent(true)))
                 .with(new HealthIntComponent(20))
-                .with(new playerComponent("dino",1, 2))
+                .with(new playerComponent("dino",1, 3))
                 .build();
     }
 
@@ -90,14 +101,14 @@ public class testFactory extends Component implements EntityFactory {
                 .build();
     }
 
-    @Spawns("monster")
+    @Spawns("bug")
     public Entity newMonster(SpawnData data){
         return FXGL.entityBuilder(data)
                 .viewWithBBox("monster.png")
                 .type(testTypes.MONSTER)
                 .with(new CollidableComponent(true))
-                .with(new monsterComponent("monster",2))
-                .with(new HealthIntComponent(10))
+                .with(new monsterComponent("bug",4,15))
+                .with(new HealthIntComponent(15))
                 .build();
     }
 
@@ -107,7 +118,7 @@ public class testFactory extends Component implements EntityFactory {
                 .viewWithBBox("chicken.png")
                 .type(testTypes.MONSTER)
                 .with(new CollidableComponent(true))
-                .with(new monsterComponent("chicken",2))
+                .with(new monsterComponent("chicken",2,10))
                 .with(new HealthIntComponent(10))
                 .build();
     }

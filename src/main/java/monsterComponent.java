@@ -4,6 +4,7 @@ import com.almasb.fxgl.entity.component.Component;
 import com.almasb.fxgl.time.TimerAction;
 import javafx.util.Duration;
 
+import java.util.Objects;
 import java.util.Random;
 
 public class monsterComponent extends Component {
@@ -11,12 +12,13 @@ public class monsterComponent extends Component {
     private double timeTS = 0;
     String naam;
     int damage;
+    int maxHP;
 
 
-    public monsterComponent(String naam, int damage) {
+    public monsterComponent(String naam, int damage, int maxHP) {
         this.naam = naam;
         this.damage = damage;
-
+        this.maxHP = maxHP;
     }
 
     @Override
@@ -25,7 +27,9 @@ public class monsterComponent extends Component {
         Entity player = testApp.player;
         if (timeTS >= 2){
             int n = rand.nextInt(4);
-            move(player,n);
+            if (!Objects.equals(entity.getComponent(monsterComponent.class).naam, "heiko")){
+                move(player,n);
+            }
             timeTS = 0;
         }
 

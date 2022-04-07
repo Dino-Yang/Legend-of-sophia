@@ -1,6 +1,7 @@
 import com.almasb.fxgl.app.GameApplication;
 import com.almasb.fxgl.app.GameSettings;
 import com.almasb.fxgl.dsl.FXGL;
+import com.almasb.fxgl.dsl.components.HealthIntComponent;
 import com.almasb.fxgl.entity.Entity;
 import com.almasb.fxgl.physics.CollisionHandler;
 import javafx.scene.control.Button;
@@ -125,6 +126,7 @@ public class testApp extends GameApplication {
     @Override
     protected void initGameVars(Map<String, Object> vars) {
         vars.put("chickensKilled", 0);
+        vars.put("bugsKilled", 0);
     }
 
     protected void initUI() {
@@ -142,16 +144,25 @@ public class testApp extends GameApplication {
     }
 
     public void onUpdate(double tpf){
-        if (FXGL.getWorldProperties().intProperty("chickensKilled").getValue() == 5){
+        if (FXGL.getWorldProperties().intProperty("chickensKilled").getValue() == 3){
             FXGL.getWorldProperties().intProperty("chickensKilled").setValue(0);
+            FXGL.setLevelFromMap("level3.tmx");
+            dialogueLevel3();
+            levelSwap = true;
+        }
+        if (FXGL.getWorldProperties().intProperty("bugsKilled").getValue() == 1){
+            FXGL.getWorldProperties().intProperty("bugsKilled").setValue(0);
             FXGL.setLevelFromMap("eindlevel.tmx");
+            dialogueLevel3();
             levelSwap = true;
         }
         if (levelSwap) {
-            objects = FXGL.getGameWorld().getEntitiesByType(testTypes.FOREST,testTypes.TREEDESPAWN);
+            objects = FXGL.getGameWorld().getEntitiesByType(testTypes.FOREST,testTypes.TREEDESPAWN, testTypes.STONEDESPAWN);
             player = FXGL.getGameWorld().getSingleton(testTypes.PLAYER);
+            player.getComponent(HealthIntComponent.class).setValue(20);
             if (twoPlayers){
                 player2 = FXGL.getGameWorld().getSingleton(testTypes.PLAYERTWO);
+                player2.getComponent(HealthIntComponent.class).setValue(20);
             }
             FXGL.getGameScene().getViewport().bindToEntity(player, width/2, height/2);
             FXGL.getGameScene().getViewport().setZoom(1.8);
@@ -182,6 +193,28 @@ public class testApp extends GameApplication {
             });
         }
 
+        FXGL.getPhysicsWorld().addCollisionHandler(new CollisionHandler(testTypes.PLAYER, testTypes.EINDBAAS) {
+
+            // order of types is the same as passed into the constructor
+            @Override
+            protected void onCollisionBegin(Entity asdf, Entity monster) {
+                dialogueLevel2();
+                FXGL.getSceneService().pushSubScene(new battleScene(player,player2, monster));
+            }
+        });
+
+        if (twoPlayers){
+            FXGL.getPhysicsWorld().addCollisionHandler(new CollisionHandler(testTypes.PLAYERTWO, testTypes.EINDBAAS) {
+
+                // order of types is the same as passed into the constructor
+                @Override
+                protected void onCollisionBegin(Entity asdf, Entity monster) {
+                    dialogueLevel2();
+                    FXGL.getSceneService().pushSubScene(new battleScene(player,player2, monster));
+                }
+            });
+        }
+
         FXGL.getPhysicsWorld().addCollisionHandler(new CollisionHandler(testTypes.PLAYER, testTypes.NPC) {
 
             // order of types is the same as passed into the constructor
@@ -190,7 +223,7 @@ public class testApp extends GameApplication {
                 objects.remove(FXGL.getGameWorld().getSingleton(testTypes.TREEDESPAWN));
                 FXGL.getGameWorld().getSingleton(testTypes.TREEDESPAWN).removeFromWorld();
                 FXGL.getGameWorld().getSingleton(testTypes.NPC).removeFromWorld();
-                dialogue();
+                dialogueLevel1();
 
             }
         });
@@ -203,14 +236,14 @@ public class testApp extends GameApplication {
                     objects.remove(FXGL.getGameWorld().getSingleton(testTypes.TREEDESPAWN));
                     FXGL.getGameWorld().getSingleton(testTypes.TREEDESPAWN).removeFromWorld();
                     FXGL.getGameWorld().getSingleton(testTypes.NPC).removeFromWorld();
-                    dialogue();
+                    dialogueLevel1();
 
                 }
             });
         }
     }
 
-    public void dialogue(){
+    public void dialogueLevel1(){
         VBox content = new VBox(
                 FXGL.getAssetLoader().loadTexture("heiko.png"),
                 FXGL.getUIFactoryService().newText("Hello there brave adventurerer, my name Heiko. Whats your name?"),
@@ -218,6 +251,29 @@ public class testApp extends GameApplication {
                 FXGL.getUIFactoryService().newText("I need your help. All these chickens a ravaging the forest."),
                 FXGL.getUIFactoryService().newText("This would be a great assesment for you, maybe I'll make you my"),
                 FXGL.getUIFactoryService().newText("student but only if you can kill 5 chickens for me.")
+        );
+
+        Button btnClose = FXGL.getUIFactoryService().newButton("Press to close");
+        btnClose.setPrefWidth(300);
+
+        FXGL.getDialogService().showBox("Heiko the wizard of assesment", content, btnClose);
+    }
+
+    public void dialogueLevel2(){
+        VBox content = new VBox(
+                FXGL.getAssetLoader().loadTexture("heiko.png")
+                );
+
+        Button btnClose = FXGL.getUIFactoryService().newButton("Press to close");
+        btnClose.setPrefWidth(300);
+
+        FXGL.getDialogService().showBox("Heiko the wizard of assesment", content, btnClose);
+    }
+
+    public void dialogueLevel3(){
+        VBox content = new VBox(
+                FXGL.getAssetLoader().loadTexture("heiko.png"),
+                FXGL.getUIFactoryService().newText("Hello there brave asdfasdfasdf, my name Heiko. Whats your name?")
         );
 
         Button btnClose = FXGL.getUIFactoryService().newButton("Press to close");

@@ -44,6 +44,7 @@ public class battleScene extends SubScene {
         //initiate variables
         player = player1;
         monster = monster1;
+        var monsterComp = monster.getComponent(monsterComponent.class);
         if (testApp.twoPlayers){
             playertwo = player2;
             player2HP = playertwo.getComponent(HealthIntComponent.class);
@@ -52,15 +53,17 @@ public class battleScene extends SubScene {
             player2HPBar.setCurrentValue(player2HP.getValue());
         }
         monster1.removeFromWorld();
-        Texture monsterImage = FXGL.getAssetLoader().loadTexture("chicken.png");
-        Texture playerImage = FXGL.getAssetLoader().loadTexture("heiko.png");
-        Texture player2Image = FXGL.getAssetLoader().loadTexture("heiko.png");
+        Texture chickenImage = FXGL.getAssetLoader().loadTexture("chickenBattle.png");
+        Texture bugImage = FXGL.getAssetLoader().loadTexture("monsterBattle.png");
+        Texture eindbaasImage = FXGL.getAssetLoader().loadTexture("heikoBattle.png");
+        Texture playerImage = FXGL.getAssetLoader().loadTexture("linkBattle.png");
+        Texture player2Image = FXGL.getAssetLoader().loadTexture("linkBattle.png");
         int width = FXGL.getAppWidth();
         int height = FXGL.getAppHeight();
         var bg = new Rectangle(width, height, Color.RED);
         monsterHP = monster.getComponent(HealthIntComponent.class);
         playerHP = player.getComponent(HealthIntComponent.class);
-        monsterHPBar.setMaxValue(10);
+        monsterHPBar.setMaxValue(monster.getComponent(monsterComponent.class).maxHP);
         monsterHPBar.setMinValue(0);
         monsterHPBar.setCurrentValue(monsterHP.getValue());
         playerHPBar.setMaxValue(20);
@@ -81,14 +84,35 @@ public class battleScene extends SubScene {
         HBox.setHgrow(filler2, Priority.ALWAYS);
 
         //setup battle view
+        VBox hpName1 = new VBox();
+        Label name1 = new Label("     "+player.getComponent(playerComponent.class).naam);
+        name1.setFont(new Font("Arial", 30));
+        hpName1.getChildren().add(playerHPBar);
+        hpName1.getChildren().add(name1);
         playerBox.getChildren().add(playerImage);
-        playerBox.getChildren().add(playerHPBar);
+        playerBox.getChildren().add(hpName1);
         if (testApp.twoPlayers){
+            VBox hpName2 = new VBox();
+            Label name2 = new Label("     "+playertwo.getComponent(playerComponent.class).naam);
+            name2.setFont(new Font("Arial", 30));
+            hpName2.getChildren().add(player2HPBar);
+            hpName2.getChildren().add(name2);
             playerBox.getChildren().add(player2Image);
-            playerBox.getChildren().add(player2HPBar);
+            playerBox.getChildren().add(hpName2);
         }
-        monsterBox.getChildren().add(monsterHPBar);
-        monsterBox.getChildren().add(monsterImage);
+        VBox hpName3 = new VBox();
+        Label name3 = new Label("     "+monster.getComponent(monsterComponent.class).naam);
+        name3.setFont(new Font("Arial", 30));
+        hpName3.getChildren().add(monsterHPBar);
+        hpName3.getChildren().add(name3);
+        monsterBox.getChildren().add(hpName3);
+        if (Objects.equals(monsterComp.naam, "chicken")) {
+            monsterBox.getChildren().add(chickenImage);
+        }else if (Objects.equals(monsterComp.naam, "bug")){
+            monsterBox.getChildren().add(bugImage);
+        }else if (Objects.equals(monsterComp.naam, "heiko")){
+            monsterBox.getChildren().add(eindbaasImage);
+        }
         battleBox.getChildren().add(playerBox);
         battleBox.getChildren().add(filler);
         battleBox.getChildren().add(monsterBox);
@@ -163,6 +187,9 @@ public class battleScene extends SubScene {
             if (player.getComponent(playerComponent.class).potionList.size() == 2 && i == 0) {
                 potionBox.getChildren().add(hulpfiller);
             }
+        }
+        if (player.getComponent(playerComponent.class).potionList.size() == 0){
+            text.setText(player.getComponent(playerComponent.class).naam +" heeft geen potions meer!");
         }
     }
 
@@ -290,6 +317,8 @@ public class battleScene extends SubScene {
             if (monsterHP.getValue() <= 0) {
                 if (Objects.equals(monster.getComponent(monsterComponent.class).naam, "chicken")){
                     FXGL.inc("chickensKilled", +1);
+                }else if(Objects.equals(monster.getComponent(monsterComponent.class).naam, "bug")){
+                    FXGL.inc("bugsKilled", +1);
                 }
                 close(stackPane);
                 potionDrop();

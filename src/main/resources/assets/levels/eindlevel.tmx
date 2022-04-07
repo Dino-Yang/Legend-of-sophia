@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="50" height="40" tilewidth="32" tileheight="32" infinite="0" nextlayerid="6" nextobjectid="46">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="50" height="40" tilewidth="32" tileheight="32" infinite="0" nextlayerid="6" nextobjectid="47">
  <editorsettings>
   <export format="tmx"/>
  </editorsettings>
@@ -186,10 +186,7 @@
 </data>
  </layer>
  <objectgroup id="5" name="Object Layer 1">
-  <object id="1" type="stoneDespawn" x="848.843" y="491.7">
-   <point/>
-  </object>
-  <object id="2" type="stoneDespawn" x="846.328" y="525.654">
+  <object id="2" type="stoneDespawn" x="847.661" y="513.654">
    <point/>
   </object>
   <object id="3" type="obstacle" x="480.534" y="158.006" width="891.025" height="30.9497"/>
@@ -235,6 +232,9 @@
    <point/>
   </object>
   <object id="45" type="player2" x="426.667" y="885.333">
+   <point/>
+  </object>
+  <object id="46" type="eindbaas" x="777.333" y="498.667">
    <point/>
   </object>
  </objectgroup>

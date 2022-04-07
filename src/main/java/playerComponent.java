@@ -7,8 +7,8 @@ import java.util.Arrays;
 public class playerComponent extends Component {
     String naam;
     int playerChoice;
-    potion smallPotion = new potion(1, 3, "Small Potion");
-    potion bigPotion = new potion(1, 6, "Big Potion");
+    potion smallPotion = new potion(1, 5, "Small Potion");
+    potion bigPotion = new potion(1, 10, "Big Potion");
     ArrayList<potion> potionList = new ArrayList<potion>(Arrays.asList(
             smallPotion, bigPotion
     ));
