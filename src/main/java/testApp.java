@@ -208,7 +208,7 @@ public class testApp extends GameApplication {
         }
 
 
-        if (FXGL.getWorldProperties().intProperty("chickensKilled").getValue() == 2){
+        if (FXGL.getWorldProperties().intProperty("chickensKilled").getValue() == 5){
             FXGL.getWorldProperties().intProperty("chickensKilled").setValue(0);
             level +=1;
             list = player.getComponent(playerComponent.class).potionList;
@@ -218,7 +218,7 @@ public class testApp extends GameApplication {
             FXGL.setLevelFromMap("level2.tmx");
             dialogueLevel3();
             levelSwap = true;
-        }else if (FXGL.getWorldProperties().intProperty("bugsKilled").getValue() == 1){
+        }else if (FXGL.getWorldProperties().intProperty("bugsKilled").getValue() == 5){
             FXGL.getWorldProperties().intProperty("bugsKilled").setValue(0);
             list = player.getComponent(playerComponent.class).potionList;
             if (twoPlayers) {
@@ -228,7 +228,7 @@ public class testApp extends GameApplication {
             level +=1;
             dialogueLevel3();
             levelSwap = true;
-        }else if (FXGL.getWorldProperties().intProperty("dinoKilled").getValue() == 2){
+        }else if (FXGL.getWorldProperties().intProperty("dinoKilled").getValue() == 5){
             FXGL.getWorldProperties().intProperty("dinoKilled").setValue(0);
             list = player.getComponent(playerComponent.class).potionList;
             if (twoPlayers) {
@@ -241,18 +241,20 @@ public class testApp extends GameApplication {
         }
 
         if (FXGL.getWorldProperties().intProperty("heikoKilled").getValue() == 1){
+            FXGL.getWorldProperties().intProperty("heikoKilled").setValue(0);
             dialogueEnd();
+            FXGL.getGameController().gotoMainMenu();
         }
 
         if (levelSwap) {
             objects = FXGL.getGameWorld().getEntitiesByType(testTypes.FOREST,testTypes.TREEDESPAWN, testTypes.STONEDESPAWN);
             player = FXGL.getGameWorld().getSingleton(testTypes.PLAYER);
-            player.getComponent(playerComponent.class).damage += 1;
+            player.getComponent(playerComponent.class).damage += level;
             player.getComponent(playerComponent.class).potionList = list;
             player.getComponent(HealthIntComponent.class).setValue(20);
             if (twoPlayers){
                 player2 = FXGL.getGameWorld().getSingleton(testTypes.PLAYERTWO);
-                player2.getComponent(playerComponent.class).damage += 1;
+                player2.getComponent(playerComponent.class).damage += level;
                 player2.getComponent(playerComponent.class).potionList= list2;
                 player2.getComponent(HealthIntComponent.class).setValue(20);
             }
