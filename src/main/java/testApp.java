@@ -86,7 +86,6 @@ public class testApp extends GameApplication {
 
 
     public void onUpdate(double tpf){
-        System.out.println("yessir");
         if (levelSwap) {
             objects = FXGL.getGameWorld().getEntitiesByType(testTypes.FOREST,testTypes.TREEDESPAWN);
             testApp.player = FXGL.getGameWorld().getSingleton(testTypes.PLAYER);
@@ -116,7 +115,7 @@ public class testApp extends GameApplication {
             protected void onCollisionBegin(Entity player, Entity npc) {
                 objects.remove(FXGL.getGameWorld().getSingleton(testTypes.TREEDESPAWN));
                 FXGL.getGameWorld().getSingleton(testTypes.TREEDESPAWN).removeFromWorld();
-
+                FXGL.getGameWorld().getSingleton(testTypes.NPC).removeFromWorld();
                 dialogue();
 
             }
