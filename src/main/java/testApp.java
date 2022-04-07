@@ -15,7 +15,6 @@ import java.util.Map;
 
 /*
 todo
-player 2 collision
 battle(crit change dodge chance)
 level swap tussen levels
 main menu to playeraantal select to name input
@@ -172,6 +171,18 @@ public class testApp extends GameApplication {
             }
         });
 
+        if (twoPlayers){
+            FXGL.getPhysicsWorld().addCollisionHandler(new CollisionHandler(testTypes.PLAYERTWO, testTypes.MONSTER) {
+
+                // order of types is the same as passed into the constructor
+                @Override
+                protected void onCollisionBegin(Entity asdf, Entity monster) {
+
+                    FXGL.getSceneService().pushSubScene(new battleScene(player,player2, monster));
+                }
+            });
+        }
+
         FXGL.getPhysicsWorld().addCollisionHandler(new CollisionHandler(testTypes.PLAYER, testTypes.NPC) {
 
             // order of types is the same as passed into the constructor
@@ -184,6 +195,20 @@ public class testApp extends GameApplication {
 
             }
         });
+
+        if (twoPlayers){
+            FXGL.getPhysicsWorld().addCollisionHandler(new CollisionHandler(testTypes.PLAYERTWO, testTypes.NPC) {
+
+                @Override
+                protected void onCollisionBegin(Entity player, Entity npc) {
+                    objects.remove(FXGL.getGameWorld().getSingleton(testTypes.TREEDESPAWN));
+                    FXGL.getGameWorld().getSingleton(testTypes.TREEDESPAWN).removeFromWorld();
+                    FXGL.getGameWorld().getSingleton(testTypes.NPC).removeFromWorld();
+                    dialogue();
+
+                }
+            });
+        }
     }
 
     public void dialogue(){
