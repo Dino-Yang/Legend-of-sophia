@@ -18,13 +18,12 @@ import java.util.Map;
 
 /*
 todo
-2 player
 battle(crit change dodge chance)
 potion drop(on enemy death)
-battle text;
 level swap tussen levels
 main menu to playeraantal select to name input
 dino sprite vinden(argh)
+KILL AMOUNT GOED DISPLAYEN!!!!
 */
 
 public class testApp extends GameApplication {
@@ -143,7 +142,6 @@ public class testApp extends GameApplication {
         textPixels.setTranslateX(50); // x = 50
         textPixels.setTranslateY(100); // y = 100
         System.out.println(chickenText.getText());
-
         FXGL.getGameScene().addUINode(textPixels);
     }
 

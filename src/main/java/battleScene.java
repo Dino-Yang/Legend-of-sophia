@@ -14,7 +14,9 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.util.Duration;
 
+import java.util.ArrayList;
 import java.util.Objects;
+import java.util.Random;
 
 /*
 todo:
@@ -189,6 +191,75 @@ public class battleScene extends SubScene {
         }
     }
 
+    public void potionSearcher(ArrayList<potion> list, String naam){
+        for (potion pot: list){
+            if (Objects.equals(pot.getNaam(), naam)){
+                pot.setCount(pot.getCount() + 1);
+            }
+        }
+    }
+
+    public void beatMessage(int choice, String potionName, String potionName2){
+        VBox content = new VBox();
+        if (choice == 0){
+            content = new VBox(
+                    FXGL.getUIFactoryService().newText(player.getComponent(playerComponent.class).naam + " dropped " + potionName + "!")
+            );
+        }else if (choice == 1)
+            content = new VBox(
+                    FXGL.getUIFactoryService().newText(player.getComponent(playerComponent.class).naam + " dropped " + potionName + "!"),
+                    FXGL.getUIFactoryService().newText(playertwo.getComponent(playerComponent.class).naam + " dropped " + potionName2 + "!")
+            );
+
+        Button btnClose = FXGL.getUIFactoryService().newButton("Press me to close");
+        btnClose.setPrefWidth(300);
+
+        FXGL.getDialogService().showBox("U defeated " + monster.getComponent(monsterComponent.class).naam, content, btnClose);
+
+    }
+
+    public void potionDrop(){
+        Random rand = new Random();
+        String potionName = null;
+        var list1 = player.getComponent(playerComponent.class).potionList;
+        int rand1 = rand.nextInt(100);
+        if (rand1 < 79 && rand1 > 19){
+            potionSearcher(list1,"Small Potion");
+            if (testApp.twoPlayers){
+                potionName = "Small Potion";
+            }else {
+                beatMessage(0, "Small Potion", null);
+            }
+        }else if(rand1 <= 19){
+            potionSearcher(list1,"Big Potion");
+            if (testApp.twoPlayers){
+                potionName = "Big Potion";
+            }else {
+                beatMessage(0, "Big Potion", null);
+            }
+        }else{
+            if (testApp.twoPlayers){
+                potionName = "nothing";
+            }else {
+                beatMessage(0, "nothing", null);
+            }
+        }
+        if (testApp.twoPlayers) {
+            var list2 = playertwo.getComponent(playerComponent.class).potionList;
+            int rand2 = rand.nextInt(100);
+            if (rand2 < 79 && rand1 > 19) {
+                potionSearcher(list2, "Small Potion");
+                beatMessage(1, "Small Potion", potionName);
+            } else if (rand2 <= 19) {
+                potionSearcher(list2, "Big Potion");
+                beatMessage(1, "Big Potion", potionName);
+            } else{
+                beatMessage(1, "nothing", potionName);
+            }
+
+        }
+    }
+
     public void turnChooser(){
         if (whoseTurn == 2 && testApp.twoPlayers){
             whoseTurn = 1;
@@ -213,6 +284,7 @@ public class battleScene extends SubScene {
                     FXGL.inc("chickensKilled", +1);
                 }
                 close(stackPane);
+                potionDrop();
             }else {
                 turnChooser();
             }
