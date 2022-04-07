@@ -46,7 +46,7 @@ public class testApp extends GameApplication {
         int moveSpeed = 2;
 
         FXGL.onKey(KeyCode.D, () -> {
-            player.translateX(moveSpeed); // move right moveSpeed pixels
+            player.translateX(moveSpeed);
             for (Entity object : objects) {
                 if (player.isColliding(object)) {
                     player.translateX(-moveSpeed);
@@ -55,7 +55,7 @@ public class testApp extends GameApplication {
         });
 
         FXGL.onKey(KeyCode.A, () -> {
-            player.translateX(-moveSpeed); // move left moveSpeed pixels
+            player.translateX(-moveSpeed);
             for (Entity object : objects) {
                 if (player.isColliding(object)) {
                     player.translateX(moveSpeed);
@@ -64,7 +64,7 @@ public class testApp extends GameApplication {
         });
 
         FXGL.onKey(KeyCode.W, () -> {
-            player.translateY(-moveSpeed); // move up moveSpeed pixels
+            player.translateY(-moveSpeed);
             for (Entity object : objects) {
                 if (player.isColliding(object)) {
                     player.translateY(moveSpeed);
@@ -74,7 +74,7 @@ public class testApp extends GameApplication {
 
 
         FXGL.onKey(KeyCode.S, () -> {
-            player.translateY(moveSpeed); // move down moveSpeed pixels
+            player.translateY(moveSpeed);
             for (Entity object : objects) {
                 if (player.isColliding(object)) {
                     player.translateY(-moveSpeed);
@@ -84,7 +84,7 @@ public class testApp extends GameApplication {
 
         if (twoPlayers){
             FXGL.onKey(KeyCode.RIGHT, () -> {
-                player2.translateX(moveSpeed); // move right moveSpeed pixels
+                player2.translateX(moveSpeed);
                 for (Entity object : objects) {
                     if (player2.isColliding(object)) {
                         player2.translateX(-moveSpeed);
@@ -93,7 +93,7 @@ public class testApp extends GameApplication {
             });
 
             FXGL.onKey(KeyCode.LEFT, () -> {
-                player2.translateX(-moveSpeed); // move left moveSpeed pixels
+                player2.translateX(-moveSpeed);
                 for (Entity object : objects) {
                     if (player2.isColliding(object)) {
                         player2.translateX(moveSpeed);
@@ -102,7 +102,7 @@ public class testApp extends GameApplication {
             });
 
             FXGL.onKey(KeyCode.UP, () -> {
-                player2.translateY(-moveSpeed); // move up moveSpeed pixels
+                player2.translateY(-moveSpeed);
                 for (Entity object : objects) {
                     if (player2.isColliding(object)) {
                         player2.translateY(moveSpeed);
@@ -112,7 +112,7 @@ public class testApp extends GameApplication {
 
 
             FXGL.onKey(KeyCode.DOWN, () -> {
-                player2.translateY(moveSpeed); // move down moveSpeed pixels
+                player2.translateY(moveSpeed);
                 for (Entity object : objects) {
                     if (player2.isColliding(object)) {
                         player2.translateY(-moveSpeed);
@@ -166,7 +166,6 @@ public class testApp extends GameApplication {
             // order of types is the same as passed into the constructor
             @Override
             protected void onCollisionBegin(Entity asdf, Entity monster) {
-
                 FXGL.getSceneService().pushSubScene(new battleScene(player,player2, monster));
             }
         });

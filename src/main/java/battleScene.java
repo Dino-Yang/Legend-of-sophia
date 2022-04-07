@@ -274,9 +274,17 @@ public class battleScene extends SubScene {
     }
 
     public void attack(StackPane stackPane, Entity player) {
+        Random rand = new Random();
+        int toCritOrNot = rand.nextInt(10);
+        int painDealt = player.getComponent(playerComponent.class).damage;
         if (playerTurn) {
+            if (toCritOrNot == 9) {
+                painDealt *= 2;
+                text.setText(player.getComponent(playerComponent.class).naam + " crit while attacking and did " + painDealt + " damage!");
+            }else{
+                text.setText(player.getComponent(playerComponent.class).naam + " attacked and did " + painDealt + " damage!");
+            }
             potionBox.setVisible(false);
-            text.setText(player.getComponent(playerComponent.class).naam + " attacked and did " + player.getComponent(playerComponent.class).damage +" damage!");
             monsterHP.setValue(monsterHP.getValue() - player.getComponent(playerComponent.class).damage);
             monsterHPBar.setCurrentValue(monsterHP.getValue());
             if (monsterHP.getValue() <= 0) {
