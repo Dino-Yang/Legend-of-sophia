@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="50" height="40" tilewidth="32" tileheight="32" infinite="0" nextlayerid="11" nextobjectid="40">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="50" height="40" tilewidth="32" tileheight="32" infinite="0" nextlayerid="11" nextobjectid="41">
  <tileset firstgid="1" source="../../../../../../../../../AppData/Roaming/Microsoft/Windows/Network Shortcuts/tiles-spritesheet.tsx"/>
  <tileset firstgid="3284" name="aa" tilewidth="32" tileheight="32" tilecount="3283" columns="67">
   <image source="../../../../../../../../../Downloads/tiles-spritesheet.png" width="2144" height="1568"/>
@@ -192,7 +192,6 @@
   <object id="12" type="obstacle" x="796" y="4" width="32" height="294"/>
   <object id="14" type="obstacle" x="326" y="-4" width="58" height="538"/>
   <object id="15" type="obstacle" x="382" y="4" width="22" height="294"/>
-  <object id="16" x="332" y="310"/>
   <object id="17" type="obstacle" x="482" y="486" width="58" height="286"/>
   <object id="21" type="obstacle" x="182" y="484" width="356" height="148"/>
   <object id="22" type="obstacle" x="124" y="628" width="226" height="656"/>
