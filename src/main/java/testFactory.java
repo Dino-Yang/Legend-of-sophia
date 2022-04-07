@@ -33,19 +33,57 @@ public class testFactory extends Component implements EntityFactory {
                 .build();
     }
 
-    @Spawns("player")
-    public Entity newPlayer(SpawnData data){
+    @Spawns("npc")
+    public Entity newNpc(SpawnData data){
         return FXGL.entityBuilder(data)
-                .viewWithBBox("link.png")
-                .type(testTypes.PLAYER)
+                .bbox(new HitBox(BoundingShape.box(data.<Integer>get("width"),data.<Integer>get("height"))))
+                .type(testTypes.NPC)
                 .with(new CollidableComponent(true))
-		.with(new HealthIntComponent(10))
-		.with(new playerComponent())
+                .build();
+    }
+
+    @Spawns("stoneDespawn")
+    public Entity newStoneDespawn(SpawnData data){
+        return FXGL.entityBuilder(data)
+                .bbox(new HitBox(BoundingShape.box(data.<Integer>get("width"),data.<Integer>get("height"))))
+                .type(testTypes.FOREST)
+                .with(new CollidableComponent(true))
+                .build();
+    }
+
+    @Spawns("player")
+    public Entity newplayer(SpawnData data){
+        return FXGL.entityBuilder(data)
+                .view("link.png")
+                .bbox(new HitBox(BoundingShape.box(30,30)))
+                .type(testTypes.PLAYER)
+                .with((new CollidableComponent(true)))
+                .with(new HealthIntComponent(20))
+                .with(new playerComponent())
+                .build();
+    }
+
+    @Spawns("pathBlock")
+    public Entity newpathBlock(SpawnData data){
+        return FXGL.entityBuilder(data)
+                .viewWithBBox("tree.png")
+                .type(testTypes.TREEDESPAWN)
+                .with(new CollidableComponent(true))
                 .build();
     }
 
     @Spawns("monster")
     public Entity newMonster(SpawnData data){
+        return FXGL.entityBuilder(data)
+                .viewWithBBox("monster.png")
+                .type(testTypes.MONSTER)
+                .with(new CollidableComponent(true))
+                .with(new monsterComponent())
+                .with(new HealthIntComponent(10))
+                .build();
+    }
+    @Spawns("chicken")
+    public Entity newchicken(SpawnData data){
         return FXGL.entityBuilder(data)
                 .viewWithBBox("monster.png")
                 .type(testTypes.MONSTER)

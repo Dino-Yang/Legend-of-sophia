@@ -15,7 +15,7 @@ import java.util.List;
 
 public class testApp extends GameApplication {
     public static Entity player;
-    private List<Entity> objects;
+    public static List<Entity> objects;
     private int width = 1280;
     private int height = 720;
     private Boolean npcCollide = false;
@@ -121,11 +121,11 @@ public class testApp extends GameApplication {
     @Override
     protected void initGame(){
         FXGL.getGameWorld().addEntityFactory(new testFactory());
-        FXGL.setLevelFromMap("eindlevel.tmx");
+        FXGL.setLevelFromMap("level1.tmx");
 //        FXGL.getGameScene().setBackgroundRepeat("grassfield.png");
         player = FXGL.getGameWorld().getSingleton(testTypes.PLAYER);
         monster = FXGL.getGameWorld().spawn("monster",-30,-30);
-        objects = FXGL.getGameWorld().getEntitiesByType(testTypes.FOREST);
+        objects = FXGL.getGameWorld().getEntitiesByType(testTypes.FOREST,testTypes.TREEDESPAWN);
         FXGL.play("intromusic.wav");
         FXGL.getGameScene().getViewport().bindToEntity(player, width/2, height/2);
         FXGL.getGameScene().getViewport().setZoom(1.8);
