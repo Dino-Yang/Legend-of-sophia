@@ -38,6 +38,7 @@ public class battleScene extends SubScene {
     HealthIntComponent player2HP;
     HBox potionBox = new HBox();
     Label text = new Label();
+    StackPane stackPane;
 
 
     public battleScene(Entity player1,Entity player2, Entity monster1) {
@@ -71,7 +72,7 @@ public class battleScene extends SubScene {
         playerHPBar.setCurrentValue(playerHP.getValue());
 
         //ui setup
-        var stackPane = new StackPane(bg);
+        stackPane = new StackPane(bg);
         VBox vBox = new VBox();
         HBox battleBox = new HBox(2);
         HBox monsterBox = new HBox(2);
@@ -353,6 +354,9 @@ public class battleScene extends SubScene {
                     }
                     text.setText(monsterEntity.naam + " hit " + paar.getKey().getComponent(playerComponent.class).naam
                     + " for " + monsterEntity.damage +" damage!");
+                    if (spelerComp.getValue() <= 0){
+                        close(stackPane);
+                    }
                     this.playerTurn = true;
                 }
             }, Duration.seconds(1));

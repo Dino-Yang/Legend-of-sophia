@@ -4,20 +4,23 @@ import com.almasb.fxgl.dsl.FXGL;
 import com.almasb.fxgl.dsl.components.HealthIntComponent;
 import com.almasb.fxgl.entity.Entity;
 import com.almasb.fxgl.physics.CollisionHandler;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 
 /*
 todo
-battle(crit change dodge chance)
-level swap tussen levels
+battle(dodge chance)
+
 main menu to playeraantal select to name input
 dino sprite vinden(argh)
 KILL AMOUNT GOED DISPLAYEN!!!!
@@ -31,6 +34,9 @@ public class testApp extends GameApplication {
     private int height = 720;
     public boolean levelSwap = false;
     public static boolean twoPlayers = true;
+    public int level =1;
+    public Text textPixels = new Text();
+
 
     @Override
     protected void initSettings(GameSettings settings) {
@@ -131,21 +137,69 @@ public class testApp extends GameApplication {
 
     protected void initUI() {
         //fix label
-        Text textPixels = new Text();
         textPixels.textProperty().bind(FXGL.getWorldProperties().intProperty("chickensKilled").asString());
         Label chickenText = new Label();
-        chickenText.setText("Chickens killed: " + textPixels.getText());
-        chickenText.setTranslateX(50); // x = 50
-        chickenText.setTranslateY(100); // y = 100
-        textPixels.setTranslateX(50); // x = 50
-        textPixels.setTranslateY(100); // y = 100
-        System.out.println(chickenText.getText());
+        chickenText.setText("Quest kills: ");
+        chickenText.setTranslateX(100);
+        chickenText.setTranslateY(100);
+        chickenText.setFont(new Font("Arial",20));
+        textPixels.setFont(new Font("Arial", 20));
+        textPixels.setTranslateX(200);
+        textPixels.setTranslateY(120);
+        chickenText.setAccessibleText("me");
         FXGL.getGameScene().addUINode(textPixels);
+        FXGL.getGameScene().addUINode(chickenText);
     }
 
     public void onUpdate(double tpf){
-        if (FXGL.getWorldProperties().intProperty("chickensKilled").getValue() == 3){
+
+
+        if (twoPlayers) {
+            if (player2.getComponent(HealthIntComponent.class).getValue() <= 0 ) {
+                dialogueDeath(player2);
+                if (level == 1) {
+                    FXGL.setLevelFromMap("level1.tmx");
+                    levelSwap = true;
+                } else if (level == 2) {
+                    FXGL.setLevelFromMap("level3.tmx");
+                    levelSwap = true;
+                } else if (level == 3) {
+                    FXGL.setLevelFromMap("eindlevel.tmx");
+                    levelSwap = true;
+                }
+            }else if (player.getComponent(HealthIntComponent.class).getValue() <= 0){
+                dialogueDeath(player);
+                if (level == 1){
+                    FXGL.setLevelFromMap("level1.tmx");
+                    levelSwap = true;
+                } else if (level == 2){
+                    FXGL.setLevelFromMap("level3.tmx");
+                    levelSwap = true;
+                }else if (level == 3){
+                    FXGL.setLevelFromMap("eindlevel.tmx");
+                    levelSwap = true;
+                }
+            }
+        }else{
+            if (player.getComponent(HealthIntComponent.class).getValue() <= 0){
+                dialogueDeath(player);
+                if (level == 1){
+                    FXGL.setLevelFromMap("level1.tmx");
+                    levelSwap = true;
+                } else if (level == 2){
+                    FXGL.setLevelFromMap("level3.tmx");
+                    levelSwap = true;
+                }else if (level == 3){
+                    FXGL.setLevelFromMap("eindlevel.tmx");
+                    levelSwap = true;
+                }
+            }
+        }
+
+
+        if (FXGL.getWorldProperties().intProperty("chickensKilled").getValue() == 1){
             FXGL.getWorldProperties().intProperty("chickensKilled").setValue(0);
+            level +=1;
             FXGL.setLevelFromMap("level3.tmx");
             dialogueLevel3();
             levelSwap = true;
@@ -153,6 +207,7 @@ public class testApp extends GameApplication {
         if (FXGL.getWorldProperties().intProperty("bugsKilled").getValue() == 1){
             FXGL.getWorldProperties().intProperty("bugsKilled").setValue(0);
             FXGL.setLevelFromMap("eindlevel.tmx");
+            level +=1;
             dialogueLevel3();
             levelSwap = true;
         }
@@ -166,6 +221,13 @@ public class testApp extends GameApplication {
             }
             FXGL.getGameScene().getViewport().bindToEntity(player, width/2, height/2);
             FXGL.getGameScene().getViewport().setZoom(1.8);
+            if (level == 2){
+                textPixels.textProperty().bind(FXGL.getWorldProperties().intProperty("bugsKilled").asString());
+            }else if(level == 3){
+                textPixels.textProperty().bind(FXGL.getWorldProperties().intProperty("bugsKilled").asString());
+            }else{
+                textPixels.setText("");
+            }
             levelSwap = false;
         }
     }
@@ -251,6 +313,18 @@ public class testApp extends GameApplication {
                 FXGL.getUIFactoryService().newText("I need your help. All these chickens a ravaging the forest."),
                 FXGL.getUIFactoryService().newText("This would be a great assesment for you, maybe I'll make you my"),
                 FXGL.getUIFactoryService().newText("student but only if you can kill 5 chickens for me.")
+        );
+
+        Button btnClose = FXGL.getUIFactoryService().newButton("Press to close");
+        btnClose.setPrefWidth(300);
+
+        FXGL.getDialogService().showBox("Heiko the wizard of assesment", content, btnClose);
+    }
+
+    public void dialogueDeath(Entity player){
+        VBox content = new VBox(
+                FXGL.getAssetLoader().loadTexture("heiko.png"),
+                FXGL.getUIFactoryService().newText(player.getComponent(playerComponent.class).naam+" ded son")
         );
 
         Button btnClose = FXGL.getUIFactoryService().newButton("Press to close");
