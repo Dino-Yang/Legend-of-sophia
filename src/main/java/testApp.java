@@ -86,12 +86,13 @@ public class testApp extends GameApplication {
 
         FXGL.getGameWorld().addEntityFactory(new testFactory());
         FXGL.setLevelFromMap("level1.tmx");
-//        FXGL.getGameScene().setBackgroundRepeat("grassfield.png");
-        player = FXGL.getGameWorld().spawn("player", 500,-20);
-        monster = FXGL.getGameWorld().spawn("monster",-30,-30);
+        FXGL.getGameScene().setBackgroundRepeat("grassfield.png");
+        player = FXGL.getGameWorld().getSingleton(testTypes.PLAYER);
+        monster = FXGL.getGameWorld().spawn("monster",130,400);
         objects = FXGL.getGameWorld().getEntitiesByType(testTypes.FOREST);
-        FXGL.play("intromusic.wav");
+//        FXGL.play("intromusic.wav");
         FXGL.getGameScene().getViewport().bindToEntity(player, width/2, height/2);
+        FXGL.getGameScene().getViewport().setZoom(1.8);
     }
 
     public static void main(String[] args) {

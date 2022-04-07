@@ -32,6 +32,7 @@ public class battleScene extends SubScene {
         //initiate variables
         player = player1;
         monster = monster1;
+        monster1.removeFromWorld();
 
         Texture monsterImage = FXGL.getAssetLoader().loadTexture("monsterBattle.png");
         Texture playerImage = FXGL.getAssetLoader().loadTexture("heiko.png");
@@ -43,10 +44,10 @@ public class battleScene extends SubScene {
         monsterHPBar.setMaxValue(10);
         monsterHPBar.setMinValue(0);
         monsterHPBar.setCurrentValue(monsterHP.getValue());
-        playerHPBar.setMaxValue(10);
+        playerHPBar.setMaxValue(20);
         playerHPBar.setMinValue(0);
         playerHPBar.setCurrentValue(playerHP.getValue());
-
+        System.out.println(playerHP.getValue());
         //ui setup
         var stackPane = new StackPane(bg);
         VBox vBox = new VBox();
@@ -127,8 +128,8 @@ public class battleScene extends SubScene {
             potionBox.setVisible(false);
             playerHP.setValue(playerHP.getValue() + pot.getHealAmount());
             //can't heal more than max hp
-            if (playerHP.getValue() > 10) {
-                playerHP.setValue(10);
+            if (playerHP.getValue() > 20) {
+                playerHP.setValue(20);
             }
             this.playerHPBar.setCurrentValue(playerHP.getValue());
             pot.setCount(pot.getCount() - 1);
@@ -144,13 +145,14 @@ public class battleScene extends SubScene {
     public void attack(StackPane stackPane) {
         if (playerTurn) {
             potionBox.setVisible(false);
-            monsterHP.setValue(monsterHP.getValue() - 1);
+            monsterHP.setValue(monsterHP.getValue() - 6);
             monsterHPBar.setCurrentValue(monsterHP.getValue());
             if (monsterHP.getValue() <= 0) {
                 close(stackPane);
+            }else {
+                this.playerTurn = false;
+                monsterAttack();
             }
-            this.playerTurn = false;
-            monsterAttack();
         }
     }
 
