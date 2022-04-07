@@ -36,7 +36,8 @@ public class testFactory extends Component implements EntityFactory {
     @Spawns("player")
     public Entity newplayer(SpawnData data){
         return FXGL.entityBuilder(data)
-                .viewWithBBox("link.png")
+                .view("link.png")
+                .bbox(new HitBox(BoundingShape.box(30,30)))
                 .type(testTypes.PLAYER)
                 .with((new CollidableComponent(true)))
                 .with(new HealthIntComponent(20))
@@ -47,11 +48,12 @@ public class testFactory extends Component implements EntityFactory {
     @Spawns("pathBlock")
     public Entity newpathBlock(SpawnData data){
         return FXGL.entityBuilder(data)
-                .viewWithBBox("tree.png")
+//                .viewWithBBox("tree.png")
                 .type(testTypes.FOREST)
                 .with(new CollidableComponent(true))
                 .build();
     }
+
     @Spawns("monster")
     public Entity newMonster(SpawnData data){
         return FXGL.entityBuilder(data)
