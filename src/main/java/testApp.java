@@ -19,6 +19,7 @@ public class testApp extends GameApplication {
     private int width = 1280;
     private int height = 720;
     private Boolean npcCollide = false;
+    public boolean levelSwap = false;
 
     @Override
     protected void initSettings(GameSettings settings) {
@@ -83,6 +84,18 @@ public class testApp extends GameApplication {
 
     private Entity monster;
 
+
+    public void onUpdate(double tpf){
+        System.out.println("yessir");
+        if (levelSwap) {
+            objects = FXGL.getGameWorld().getEntitiesByType(testTypes.FOREST,testTypes.TREEDESPAWN);
+            testApp.player = FXGL.getGameWorld().getSingleton(testTypes.PLAYER);
+            FXGL.getGameScene().getViewport().bindToEntity(player, width/2, height/2);
+            FXGL.getGameScene().getViewport().setZoom(1.8);
+            levelSwap = false;
+        }
+    }
+
     @Override
     protected void initPhysics() {
         FXGL.getPhysicsWorld().addCollisionHandler(new CollisionHandler(testTypes.PLAYER, testTypes.MONSTER) {
@@ -90,7 +103,9 @@ public class testApp extends GameApplication {
             // order of types is the same as passed into the constructor
             @Override
             protected void onCollisionBegin(Entity player, Entity monster) {
-                FXGL.getSceneService().pushSubScene(new battleScene(player, monster));
+                levelSwap = true;
+                FXGL.setLevelFromMap("eindlevel.tmx");
+//                FXGL.getSceneService().pushSubScene(new battleScene(player, monster));
             }
         });
 
@@ -99,7 +114,11 @@ public class testApp extends GameApplication {
             // order of types is the same as passed into the constructor
             @Override
             protected void onCollisionBegin(Entity player, Entity npc) {
+                objects.remove(FXGL.getGameWorld().getSingleton(testTypes.TREEDESPAWN));
+                FXGL.getGameWorld().getSingleton(testTypes.TREEDESPAWN).removeFromWorld();
+
                 dialogue();
+
             }
         });
     }
@@ -117,14 +136,12 @@ public class testApp extends GameApplication {
         btnClose.setPrefWidth(300);
 
         FXGL.getDialogService().showBox("This is a customizable box", content, btnClose);
-        FXGL.getDialogService().showBox("This is a customizable box", content, btnClose);
     }
 
     @Override
     protected void initGame(){
         FXGL.getGameWorld().addEntityFactory(new testFactory());
         FXGL.setLevelFromMap("level1.tmx");
-//        FXGL.getGameScene().setBackgroundRepeat("grassfield.png");
         player = FXGL.getGameWorld().getSingleton(testTypes.PLAYER);
         monster = FXGL.getGameWorld().spawn("monster",-30,-30);
         objects = FXGL.getGameWorld().getEntitiesByType(testTypes.FOREST,testTypes.TREEDESPAWN);
