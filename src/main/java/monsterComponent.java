@@ -23,14 +23,35 @@ public class monsterComponent extends Component {
     }
 
     public void move(Entity player, int n){
+
         if (getEntity().distance(player) < 500 && n == 0) {
             entity.translateX(-40);
+            for (Entity block: testApp.objects){
+                if (entity.isColliding(block)){
+                    entity.translateX(40);
+                }
+            }
         } else if (getEntity().distance(player) < 500 && n == 1) {
             entity.translateX(40);
+            for (Entity block: testApp.objects){
+                if (entity.isColliding(block)){
+                    entity.translateX(-40);
+                }
+            }
         } else if (getEntity().distance(player) < 500 && n == 2) {
             entity.translateY(40);
+            for (Entity block: testApp.objects){
+                if (entity.isColliding(block)){
+                    entity.translateY(-40);
+                }
+            }
         } else if (getEntity().distance(player) < 500 && n == 3) {
             entity.translateY(-40);
+            for (Entity block: testApp.objects){
+                if (entity.isColliding(block)){
+                    entity.translateY(40);
+                }
+            }
         }
     }
 }

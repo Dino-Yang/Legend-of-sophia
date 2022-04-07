@@ -33,6 +33,24 @@ public class testFactory extends Component implements EntityFactory {
                 .build();
     }
 
+    @Spawns("npc")
+    public Entity newNpc(SpawnData data){
+        return FXGL.entityBuilder(data)
+                .bbox(new HitBox(BoundingShape.box(data.<Integer>get("width"),data.<Integer>get("height"))))
+                .type(testTypes.NPC)
+                .with(new CollidableComponent(true))
+                .build();
+    }
+
+    @Spawns("stoneDespawn")
+    public Entity newStoneDespawn(SpawnData data){
+        return FXGL.entityBuilder(data)
+                .bbox(new HitBox(BoundingShape.box(data.<Integer>get("width"),data.<Integer>get("height"))))
+                .type(testTypes.FOREST)
+                .with(new CollidableComponent(true))
+                .build();
+    }
+
     @Spawns("player")
     public Entity newplayer(SpawnData data){
         return FXGL.entityBuilder(data)
@@ -48,8 +66,8 @@ public class testFactory extends Component implements EntityFactory {
     @Spawns("pathBlock")
     public Entity newpathBlock(SpawnData data){
         return FXGL.entityBuilder(data)
-//                .viewWithBBox("tree.png")
-                .type(testTypes.FOREST)
+                .viewWithBBox("tree.png")
+                .type(testTypes.TREEDESPAWN)
                 .with(new CollidableComponent(true))
                 .build();
     }
