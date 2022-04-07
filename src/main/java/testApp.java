@@ -99,7 +99,9 @@ public class testApp extends GameApplication {
             // order of types is the same as passed into the constructor
             @Override
             protected void onCollisionBegin(Entity player, Entity npc) {
+                objects.remove(FXGL.getGameWorld().getSingleton(testTypes.TREEDESPAWN));
                 FXGL.getGameWorld().getSingleton(testTypes.TREEDESPAWN).removeFromWorld();
+
                 dialogue();
 
             }
