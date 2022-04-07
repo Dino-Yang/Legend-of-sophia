@@ -4,13 +4,16 @@ import com.almasb.fxgl.dsl.FXGL;
 import com.almasb.fxgl.entity.Entity;
 import com.almasb.fxgl.physics.CollisionHandler;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
 
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 
 /*
@@ -26,11 +29,12 @@ dino sprite vinden(argh)
 
 public class testApp extends GameApplication {
     public static Entity player;
+    public static Entity player2;
     public static List<Entity> objects;
     private int width = 1280;
     private int height = 720;
-    private Boolean npcCollide = false;
     public boolean levelSwap = false;
+    public static boolean twoPlayers = false;
 
     @Override
     protected void initSettings(GameSettings settings) {
@@ -45,15 +49,6 @@ public class testApp extends GameApplication {
     @Override
     protected void initInput() {
         int moveSpeed = 2;
-
-        if (npcCollide){
-            FXGL.onKey(KeyCode.F, () -> {
-                player.translateX(moveSpeed); // move right moveSpeed pixels
-                if (player.isColliding(FXGL.getGameWorld().getSingleton(testTypes.NPC))){
-                    System.out.println("blabla");
-                }
-            });
-        }
 
         FXGL.onKey(KeyCode.D, () -> {
             player.translateX(moveSpeed); // move right moveSpeed pixels
@@ -91,12 +86,73 @@ public class testApp extends GameApplication {
                 }
             }
         });
+
+        if (twoPlayers){
+            FXGL.onKey(KeyCode.RIGHT, () -> {
+                player2.translateX(moveSpeed); // move right moveSpeed pixels
+                for (Entity object : objects) {
+                    if (player2.isColliding(object)) {
+                        player2.translateX(-moveSpeed);
+                    }
+                }
+            });
+
+            FXGL.onKey(KeyCode.LEFT, () -> {
+                player2.translateX(-moveSpeed); // move left moveSpeed pixels
+                for (Entity object : objects) {
+                    if (player2.isColliding(object)) {
+                        player2.translateX(moveSpeed);
+                    }
+                }
+            });
+
+            FXGL.onKey(KeyCode.UP, () -> {
+                player2.translateY(-moveSpeed); // move up moveSpeed pixels
+                for (Entity object : objects) {
+                    if (player2.isColliding(object)) {
+                        player2.translateY(moveSpeed);
+                    }
+                }
+            });
+
+
+            FXGL.onKey(KeyCode.DOWN, () -> {
+                player2.translateY(moveSpeed); // move down moveSpeed pixels
+                for (Entity object : objects) {
+                    if (player2.isColliding(object)) {
+                        player2.translateY(-moveSpeed);
+                    }
+                }
+            });
+        }
     }
 
-    private Entity monster;
+    @Override
+    protected void initGameVars(Map<String, Object> vars) {
+        vars.put("chickensKilled", 0);
+    }
 
+    protected void initUI() {
+        //fix label
+        Text textPixels = new Text();
+        textPixels.textProperty().bind(FXGL.getWorldProperties().intProperty("chickensKilled").asString());
+        Label chickenText = new Label();
+        chickenText.setText("Chickens killed: " + textPixels.getText());
+        chickenText.setTranslateX(50); // x = 50
+        chickenText.setTranslateY(100); // y = 100
+        textPixels.setTranslateX(50); // x = 50
+        textPixels.setTranslateY(100); // y = 100
+        System.out.println(chickenText.getText());
+
+        FXGL.getGameScene().addUINode(textPixels);
+    }
 
     public void onUpdate(double tpf){
+        if (FXGL.getWorldProperties().intProperty("chickensKilled").getValue() == 5){
+            FXGL.getWorldProperties().intProperty("chickensKilled").setValue(0);
+            FXGL.setLevelFromMap("eindlevel.tmx");
+            levelSwap = true;
+        }
         if (levelSwap) {
             objects = FXGL.getGameWorld().getEntitiesByType(testTypes.FOREST,testTypes.TREEDESPAWN);
             testApp.player = FXGL.getGameWorld().getSingleton(testTypes.PLAYER);
@@ -112,10 +168,9 @@ public class testApp extends GameApplication {
 
             // order of types is the same as passed into the constructor
             @Override
-            protected void onCollisionBegin(Entity player, Entity monster) {
-//                levelSwap = true;
-//                FXGL.setLevelFromMap("eindlevel.tmx");
-                FXGL.getSceneService().pushSubScene(new battleScene(player, monster));
+            protected void onCollisionBegin(Entity asdf, Entity monster) {
+
+                FXGL.getSceneService().pushSubScene(new battleScene(player,player2, monster));
             }
         });
 
@@ -154,8 +209,12 @@ public class testApp extends GameApplication {
         FXGL.getGameWorld().addEntityFactory(new testFactory());
         FXGL.setLevelFromMap("level1.tmx");
         player = FXGL.getGameWorld().getSingleton(testTypes.PLAYER);
+        if (twoPlayers){
+            player2 = FXGL.getGameWorld().getSingleton(testTypes.PLAYERTWO);
+        }
+//        testTypes.PLAYERS = ;
         objects = FXGL.getGameWorld().getEntitiesByType(testTypes.FOREST,testTypes.TREEDESPAWN);
-        FXGL.play("intromusic.wav");
+//        FXGL.play("intromusic.wav");
         FXGL.getGameScene().getViewport().bindToEntity(player, width/2, height/2);
         FXGL.getGameScene().getViewport().setZoom(1.8);
     }

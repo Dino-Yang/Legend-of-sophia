@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="53" height="31" tilewidth="32" tileheight="32" infinite="0" nextlayerid="11" nextobjectid="102">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="53" height="31" tilewidth="32" tileheight="32" infinite="0" nextlayerid="11" nextobjectid="103">
  <tileset firstgid="1" name="tiles-spritesheet" tilewidth="32" tileheight="32" tilecount="3283" columns="67">
-  <image source="../Github/sophia/src/main/resources/assets/levels/tiles-spritesheet.png" width="2144" height="1568"/>
+  <image source="tiles-spritesheet.png" width="2144" height="1568"/>
  </tileset>
  <layer id="1" name="Tile Layer 1" width="53" height="31">
   <data encoding="csv">
@@ -263,6 +263,9 @@
    <point/>
   </object>
   <object id="96" type="npc" x="388" y="695">
+   <point/>
+  </object>
+  <object id="102" type="player2" x="500" y="796">
    <point/>
   </object>
  </objectgroup>

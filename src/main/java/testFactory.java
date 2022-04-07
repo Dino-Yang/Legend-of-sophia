@@ -60,9 +60,26 @@ public class testFactory extends Component implements EntityFactory {
                 .type(testTypes.PLAYER)
                 .with((new CollidableComponent(true)))
                 .with(new HealthIntComponent(20))
-                .with(new playerComponent())
+                .with(new playerComponent("dino",1, 2))
                 .build();
     }
+
+    @Spawns("player2")
+    public Entity newplayer2(SpawnData data){
+        if (testApp.twoPlayers) {
+            return FXGL.entityBuilder(data)
+                    .view("link.png")
+                    .bbox(new HitBox(BoundingShape.box(30, 30)))
+                    .type(testTypes.PLAYERTWO)
+                    .with((new CollidableComponent(true)))
+                    .with(new HealthIntComponent(20))
+                    .with(new playerComponent("blabla",2,3))
+                    .build();
+        }
+        return FXGL.entityBuilder(data)
+                .build();
+    }
+
 
     @Spawns("pathBlock")
     public Entity newpathBlock(SpawnData data){
@@ -79,17 +96,18 @@ public class testFactory extends Component implements EntityFactory {
                 .viewWithBBox("monster.png")
                 .type(testTypes.MONSTER)
                 .with(new CollidableComponent(true))
-                .with(new monsterComponent())
+                .with(new monsterComponent("monster"))
                 .with(new HealthIntComponent(10))
                 .build();
     }
+
     @Spawns("chicken")
     public Entity newchicken(SpawnData data){
         return FXGL.entityBuilder(data)
                 .viewWithBBox("chicken.png")
                 .type(testTypes.MONSTER)
                 .with(new CollidableComponent(true))
-                .with(new monsterComponent())
+                .with(new monsterComponent("chicken"))
                 .with(new HealthIntComponent(10))
                 .build();
     }

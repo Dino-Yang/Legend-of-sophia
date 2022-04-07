@@ -13,6 +13,8 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
 
+import java.util.Objects;
+
 /*
 todo:
 AlmasB aanklagen
@@ -20,22 +22,34 @@ AlmasB aanklagen
 
 public class battleScene extends SubScene {
     Entity player;
+    Entity playertwo;
     Entity monster;
     ProgressBar monsterHPBar = new ProgressBar();
     ProgressBar playerHPBar = new ProgressBar();
+    ProgressBar player2HPBar = new ProgressBar();
     Boolean playerTurn = true;
+    int whoseTurn = 1;
     HealthIntComponent monsterHP;
     HealthIntComponent playerHP;
+    HealthIntComponent player2HP;
     HBox potionBox = new HBox();
 
-    public battleScene(Entity player1, Entity monster1) {
+
+    public battleScene(Entity player1,Entity player2, Entity monster1) {
         //initiate variables
         player = player1;
         monster = monster1;
+        if (testApp.twoPlayers){
+            playertwo = player2;
+            player2HP = playertwo.getComponent(HealthIntComponent.class);
+            player2HPBar.setMaxValue(20);
+            player2HPBar.setMinValue(0);
+            player2HPBar.setCurrentValue(player2HP.getValue());
+        }
         monster1.removeFromWorld();
-
         Texture monsterImage = FXGL.getAssetLoader().loadTexture("chicken.png");
         Texture playerImage = FXGL.getAssetLoader().loadTexture("heiko.png");
+        Texture player2Image = FXGL.getAssetLoader().loadTexture("heiko.png");
         int width = FXGL.getAppWidth();
         int height = FXGL.getAppHeight();
         var bg = new Rectangle(width, height, Color.RED);
@@ -47,7 +61,7 @@ public class battleScene extends SubScene {
         playerHPBar.setMaxValue(20);
         playerHPBar.setMinValue(0);
         playerHPBar.setCurrentValue(playerHP.getValue());
-        System.out.println(playerHP.getValue());
+
         //ui setup
         var stackPane = new StackPane(bg);
         VBox vBox = new VBox();
@@ -64,6 +78,10 @@ public class battleScene extends SubScene {
         //setup view of the battle
         playerBox.getChildren().add(playerImage);
         playerBox.getChildren().add(playerHPBar);
+        if (testApp.twoPlayers){
+            playerBox.getChildren().add(player2Image);
+            playerBox.getChildren().add(player2HPBar);
+        }
         monsterBox.getChildren().add(monsterHPBar);
         monsterBox.getChildren().add(monsterImage);
         battleBox.getChildren().add(playerBox);
@@ -73,11 +91,21 @@ public class battleScene extends SubScene {
 
         //setup buttons
         Button attackBtn = new Button("click");
-        attackBtn.setOnAction(e -> attack(stackPane));
+        attackBtn.setOnAction(e ->{
+            if (whoseTurn == 1){
+                attack(stackPane,player);
+            }else{
+                attack(stackPane,playertwo);
+            }
+        });
         Button itemBtn = new Button("ITEMS");
         itemBtn.setOnAction(e -> {
             potionBox.getChildren().clear();
-            generatePotionMenu();
+            if (whoseTurn == 1){
+                generatePotionMenu(player);
+            }else{
+                generatePotionMenu(playertwo);
+            }
             potionBox.setVisible(true);
         });
         menuBox.getChildren().add(attackBtn);
@@ -96,7 +124,7 @@ public class battleScene extends SubScene {
         this.getContentRoot().getChildren().add(stackPane);
     }
 
-    public void generatePotionMenu() {
+    public void generatePotionMenu(Entity player) {
         for (int i = 0; i < player.getComponent(playerComponent.class).potionList.size(); i++) {
             potion pot = player.getComponent(playerComponent.class).potionList.get(i);
             Texture potionImage = FXGL.getAssetLoader().loadTexture("potion.png");
@@ -110,7 +138,7 @@ public class battleScene extends SubScene {
             potNaam.setTextFill(Color.BLACK);
             potCount.setTextFill(Color.BLACK);
             Button use = new Button("GEBRUIK!");
-            use.setOnAction(e -> usePotion(pot));
+            use.setOnAction(e -> usePotion(pot,player));
             hulp.getChildren().add(potNaam);
             hulp.getChildren().add(potCount);
             potionHbox.getChildren().add(potionImage);
@@ -123,35 +151,61 @@ public class battleScene extends SubScene {
         }
     }
 
-    public void usePotion(potion pot) {
+    public void usePotion(potion pot,Entity player) {
+        var playerChoice = player.getComponent(HealthIntComponent.class);
         if (playerTurn) {
             potionBox.setVisible(false);
-            playerHP.setValue(playerHP.getValue() + pot.getHealAmount());
+            playerChoice.setValue(playerChoice.getValue() + pot.getHealAmount());
             //can't heal more than max hp
-            if (playerHP.getValue() > 20) {
-                playerHP.setValue(20);
+            if (playerChoice.getValue() > 20) {
+                playerChoice.setValue(20);
             }
-            this.playerHPBar.setCurrentValue(playerHP.getValue());
-            pot.setCount(pot.getCount() - 1);
+            if (player.getComponent(playerComponent.class).playerChoice == 1) {
+                this.playerHPBar.setCurrentValue(playerChoice.getValue());
+                pot.setCount(pot.getCount() - 1);
+            }else{
+                this.player2HPBar.setCurrentValue(playerChoice.getValue());
+                pot.setCount(pot.getCount() - 1);
+            }
             //remove potion from potionList if potion count = 0
             if (pot.getCount() == 0) {
                 player.getComponent(playerComponent.class).potionList.remove(pot);
             }
-            this.playerTurn = false;
-            monsterAttack();
+            if (whoseTurn == 2 && testApp.twoPlayers){
+                whoseTurn = 1;
+                this.playerTurn = false;
+                monsterAttack();
+            }else if (!testApp.twoPlayers){
+                this.playerTurn = false;
+                monsterAttack();
+            }else{
+                whoseTurn = 2;
+            }
         }
     }
 
-    public void attack(StackPane stackPane) {
+    public void attack(StackPane stackPane, Entity player) {
         if (playerTurn) {
+            System.out.println(player.getComponent(playerComponent.class).damage);
             potionBox.setVisible(false);
-            monsterHP.setValue(monsterHP.getValue() - 6);
+            monsterHP.setValue(monsterHP.getValue() - player.getComponent(playerComponent.class).damage);
             monsterHPBar.setCurrentValue(monsterHP.getValue());
             if (monsterHP.getValue() <= 0) {
+                if (Objects.equals(monster.getComponent(monsterComponent.class).naam, "chicken")){
+                    FXGL.inc("chickensKilled", +1);
+                }
                 close(stackPane);
             }else {
-                this.playerTurn = false;
-                monsterAttack();
+                if (whoseTurn == 2 && testApp.twoPlayers){
+                    whoseTurn = 1;
+                    this.playerTurn = false;
+                    monsterAttack();
+                }else if (!testApp.twoPlayers){
+                    this.playerTurn = false;
+                    monsterAttack();
+                }else{
+                    whoseTurn = 2;
+                }
             }
         }
     }
