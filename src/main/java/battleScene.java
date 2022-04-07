@@ -57,6 +57,7 @@ public class battleScene extends SubScene {
         Texture chickenImage = FXGL.getAssetLoader().loadTexture("chickenBattle.png");
         Texture bugImage = FXGL.getAssetLoader().loadTexture("monsterBattle.png");
         Texture eindbaasImage = FXGL.getAssetLoader().loadTexture("heikoBattle.png");
+        Texture dinoImage = FXGL.getAssetLoader().loadTexture("dinoBattle.png");
         Texture playerImage = FXGL.getAssetLoader().loadTexture("linkBattle.png");
         Texture player2Image = FXGL.getAssetLoader().loadTexture("linkBattle.png");
         int width = FXGL.getAppWidth();
@@ -113,6 +114,9 @@ public class battleScene extends SubScene {
             monsterBox.getChildren().add(bugImage);
         }else if (Objects.equals(monsterComp.naam, "heiko")){
             monsterBox.getChildren().add(eindbaasImage);
+        }
+        else if (Objects.equals(monsterComp.naam, "dino")){
+            monsterBox.getChildren().add(dinoImage);
         }
         battleBox.getChildren().add(playerBox);
         battleBox.getChildren().add(filler);
@@ -208,6 +212,7 @@ public class battleScene extends SubScene {
             if (player.getComponent(playerComponent.class).playerChoice == 1) {
                 this.playerHPBar.setCurrentValue(playerChoice.getValue());
                 pot.setCount(pot.getCount() - 1);
+                player.getComponent(playerComponent.class).Score -= 5;
             }else{
                 this.player2HPBar.setCurrentValue(playerChoice.getValue());
                 pot.setCount(pot.getCount() - 1);
@@ -215,15 +220,25 @@ public class battleScene extends SubScene {
             //remove potion from potionList if potion count = 0
             if (pot.getCount() == 0) {
                 player.getComponent(playerComponent.class).potionList.remove(pot);
+                player.getComponent(playerComponent.class).Score -= 10;
             }
             turnChooser();
         }
     }
 
     public void potionSearcher(ArrayList<potion> list, String naam){
+        boolean potExist = false;
         for (potion pot: list){
             if (Objects.equals(pot.getNaam(), naam)){
                 pot.setCount(pot.getCount() + 1);
+                potExist = true;
+            }
+        }
+        if (!potExist){
+            if (Objects.equals(naam, "Small Potion")){
+                list.add(new potion(1,5,naam));
+            }else{
+                list.add(new potion(1,10,naam));
             }
         }
     }
@@ -252,7 +267,7 @@ public class battleScene extends SubScene {
         String potionName = null;
         var list1 = player.getComponent(playerComponent.class).potionList;
         int rand1 = rand.nextInt(100);
-        if (rand1 < 79 && rand1 > 19){
+        if (rand1 > 19 && rand1 < 79 ){
             potionSearcher(list1,"Small Potion");
             if (testApp.twoPlayers){
                 potionName = "Small Potion";
@@ -276,16 +291,27 @@ public class battleScene extends SubScene {
         if (testApp.twoPlayers) {
             var list2 = playertwo.getComponent(playerComponent.class).potionList;
             int rand2 = rand.nextInt(100);
-            if (rand2 < 79 && rand1 > 19) {
+            if (rand2 > 19 && rand2 < 79 ) {
                 potionSearcher(list2, "Small Potion");
-                beatMessage(1, "Small Potion", potionName);
+                beatMessage(1, potionName,"Small Potion");
             } else if (rand2 <= 19) {
+                System.out.println("yessir");
                 potionSearcher(list2, "Big Potion");
-                beatMessage(1, "Big Potion", potionName);
+                beatMessage(1,  potionName,"Big Potion");
             } else{
                 beatMessage(1, "nothing", potionName);
             }
+            for (potion pot : list1){
+                System.out.println(pot.getNaam());
+                System.out.println(pot.getCount());
+            }
+            for (potion pot : list2){
+                System.out.println(pot.getNaam());
+                System.out.println(pot.getCount());
+            }
+
         }
+
     }
 
     public void turnChooser(){
@@ -301,25 +327,46 @@ public class battleScene extends SubScene {
         }
     }
 
-    public void attack(StackPane stackPane, Entity player) {
+    public void attack(StackPane stackPane, Entity playerChoice) {
         Random rand = new Random();
         int toCritOrNot = rand.nextInt(10);
-        int painDealt = player.getComponent(playerComponent.class).damage;
+        int painDealt = playerChoice.getComponent(playerComponent.class).damage;
         if (playerTurn) {
             if (toCritOrNot == 9) {
                 painDealt *= 2;
-                text.setText(player.getComponent(playerComponent.class).naam + " crit while attacking and did " + painDealt + " damage!");
+                text.setText(playerChoice.getComponent(playerComponent.class).naam + " crit while attacking and did " + painDealt + " damage!");
             }else{
-                text.setText(player.getComponent(playerComponent.class).naam + " attacked and did " + painDealt + " damage!");
+                text.setText(playerChoice.getComponent(playerComponent.class).naam + " attacked and did " + painDealt + " damage!");
             }
             potionBox.setVisible(false);
-            monsterHP.setValue(monsterHP.getValue() - player.getComponent(playerComponent.class).damage);
+            monsterHP.setValue(monsterHP.getValue() - playerChoice.getComponent(playerComponent.class).damage);
             monsterHPBar.setCurrentValue(monsterHP.getValue());
             if (monsterHP.getValue() <= 0) {
                 if (Objects.equals(monster.getComponent(monsterComponent.class).naam, "chicken")){
                     FXGL.inc("chickensKilled", +1);
+                    player.getComponent(playerComponent.class).Score += 10;
+                    if (testApp.twoPlayers){
+                        playertwo.getComponent(playerComponent.class).Score += 10;
+                    }
                 }else if(Objects.equals(monster.getComponent(monsterComponent.class).naam, "bug")){
                     FXGL.inc("bugsKilled", +1);
+                    player.getComponent(playerComponent.class).Score += 20;
+                    if (testApp.twoPlayers){
+                        playertwo.getComponent(playerComponent.class).Score += 20;
+                    }
+                }else if(Objects.equals(monster.getComponent(monsterComponent.class).naam, "dino")){
+                    FXGL.inc("dinoKilled", +1);
+                    player.getComponent(playerComponent.class).Score += 30;
+                    if (testApp.twoPlayers){
+                        playertwo.getComponent(playerComponent.class).Score += 30;
+                    }
+                }
+                else if(Objects.equals(monster.getComponent(monsterComponent.class).naam, "heiko")){
+                    FXGL.inc("heikoKilled", +1);
+                    player.getComponent(playerComponent.class).Score += 50;
+                    if (testApp.twoPlayers){
+                        playertwo.getComponent(playerComponent.class).Score += 50;
+                    }
                 }
                 close(stackPane);
                 potionDrop();

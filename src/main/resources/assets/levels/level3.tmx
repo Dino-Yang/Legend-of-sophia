@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="70" height="40" tilewidth="32" tileheight="32" infinite="0" nextlayerid="11" nextobjectid="51">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="70" height="40" tilewidth="32" tileheight="32" infinite="0" nextlayerid="11" nextobjectid="61">
  <tileset firstgid="1" source="../../../../../../../../../AppData/Roaming/Microsoft/Windows/Network Shortcuts/tiles-spritesheet.tsx"/>
  <tileset firstgid="1" name="aa" tilewidth="32" tileheight="32" tilecount="3283" columns="67">
   <image source="tiles-spritesheet.png" width="2144" height="1568"/>
@@ -205,31 +205,34 @@
   <object id="31" type="obstacle" x="864" y="672" width="50" height="112"/>
   <object id="37" type="obstacle" x="1325.33" y="686.667" width="160" height="62.6667"/>
   <object id="38" type="obstacle" x="1365.33" y="662.667" width="53.3333" height="120"/>
-  <object id="39" type="player2" x="1652" y="858">
+  <object id="39" type="player2" x="1631.33" y="862">
    <point/>
   </object>
-  <object id="41" type="player" x="1617.5" y="859.5">
+  <object id="41" type="player" x="1593.5" y="863.5">
    <point/>
   </object>
-  <object id="42" type="bug" x="1174" y="678">
+  <object id="51" type="dino" x="1116.67" y="446">
    <point/>
   </object>
-  <object id="43" type="bug" x="740" y="808">
+  <object id="53" type="dino" x="1229.33" y="750.667">
    <point/>
   </object>
-  <object id="44" type="bug" x="1268" y="460">
+  <object id="55" type="dino" x="968.667" y="557.333">
    <point/>
   </object>
-  <object id="45" type="bug" x="1165.7" y="453.091">
+  <object id="56" type="dino" x="756" y="846.667">
    <point/>
   </object>
-  <object id="46" type="bug" x="996" y="532">
+  <object id="57" type="dino" x="1530.67" y="614.667">
    <point/>
   </object>
-  <object id="47" type="bug" x="988" y="750">
+  <object id="58" type="dino" x="1308" y="460.667">
    <point/>
   </object>
-  <object id="48" type="bug" x="1532" y="664">
+  <object id="59" type="dino" x="920" y="484">
+   <point/>
+  </object>
+  <object id="60" type="dino" x="957.333" y="781.333">
    <point/>
   </object>
  </objectgroup>

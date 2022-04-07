@@ -58,8 +58,19 @@ public class testFactory extends Component implements EntityFactory {
                 .viewWithBBox("heiko.png")
                 .type(testTypes.EINDBAAS)
                 .with(new CollidableComponent(true))
-                .with(new monsterComponent("heiko",8, 30))
-                .with(new HealthIntComponent(30))
+                .with(new monsterComponent("heiko",8, 25))
+                .with(new HealthIntComponent(25))
+                .build();
+    }
+
+    @Spawns("dino")
+    public Entity newDino(SpawnData data){
+        return FXGL.entityBuilder(data)
+                .viewWithBBox("dino.png")
+                .type(testTypes.MONSTER)
+                .with(new CollidableComponent(true))
+                .with(new monsterComponent("dino",6,20))
+                .with(new HealthIntComponent(20))
                 .build();
     }
 
@@ -71,7 +82,7 @@ public class testFactory extends Component implements EntityFactory {
                 .type(testTypes.PLAYER)
                 .with((new CollidableComponent(true)))
                 .with(new HealthIntComponent(20))
-                .with(new playerComponent("dino",1, 3))
+                .with(new playerComponent("qwer",1, 3, 0))
                 .build();
     }
 
@@ -84,7 +95,7 @@ public class testFactory extends Component implements EntityFactory {
                     .type(testTypes.PLAYERTWO)
                     .with((new CollidableComponent(true)))
                     .with(new HealthIntComponent(20))
-                    .with(new playerComponent("blabla",2,3))
+                    .with(new playerComponent("blabla",2,3, 0))
                     .build();
         }
         return FXGL.entityBuilder(data)

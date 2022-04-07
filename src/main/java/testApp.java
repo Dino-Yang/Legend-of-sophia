@@ -12,6 +12,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
@@ -19,10 +20,7 @@ import java.util.Objects;
 
 /*
 todo
-battle(dodge chance)
-
 main menu to playeraantal select to name input
-dino sprite vinden(argh)
 KILL AMOUNT GOED DISPLAYEN!!!!
 */
 
@@ -36,6 +34,8 @@ public class testApp extends GameApplication {
     public static boolean twoPlayers = true;
     public int level =1;
     public Text textPixels = new Text();
+    ArrayList<potion> list;
+    ArrayList<potion> list2;
 
 
     @Override
@@ -133,6 +133,8 @@ public class testApp extends GameApplication {
     protected void initGameVars(Map<String, Object> vars) {
         vars.put("chickensKilled", 0);
         vars.put("bugsKilled", 0);
+        vars.put("dinoKilled", 0);
+        vars.put("heikoKilled", 0);
     }
 
     protected void initUI() {
@@ -160,10 +162,13 @@ public class testApp extends GameApplication {
                 if (level == 1) {
                     FXGL.setLevelFromMap("level1.tmx");
                     levelSwap = true;
-                } else if (level == 2) {
+                } else if (level == 2){
+                    FXGL.setLevelFromMap("level2.tmx");
+                    levelSwap = true;
+                }else if (level == 3){
                     FXGL.setLevelFromMap("level3.tmx");
                     levelSwap = true;
-                } else if (level == 3) {
+                } else if (level == 4){
                     FXGL.setLevelFromMap("eindlevel.tmx");
                     levelSwap = true;
                 }
@@ -173,9 +178,12 @@ public class testApp extends GameApplication {
                     FXGL.setLevelFromMap("level1.tmx");
                     levelSwap = true;
                 } else if (level == 2){
-                    FXGL.setLevelFromMap("level3.tmx");
+                    FXGL.setLevelFromMap("level2.tmx");
                     levelSwap = true;
                 }else if (level == 3){
+                    FXGL.setLevelFromMap("level3.tmx");
+                    levelSwap = true;
+                } else if (level == 4){
                     FXGL.setLevelFromMap("eindlevel.tmx");
                     levelSwap = true;
                 }
@@ -187,9 +195,12 @@ public class testApp extends GameApplication {
                     FXGL.setLevelFromMap("level1.tmx");
                     levelSwap = true;
                 } else if (level == 2){
-                    FXGL.setLevelFromMap("level3.tmx");
+                    FXGL.setLevelFromMap("level2.tmx");
                     levelSwap = true;
                 }else if (level == 3){
+                    FXGL.setLevelFromMap("level3.tmx");
+                    levelSwap = true;
+                } else if (level == 4){
                     FXGL.setLevelFromMap("eindlevel.tmx");
                     levelSwap = true;
                 }
@@ -197,26 +208,52 @@ public class testApp extends GameApplication {
         }
 
 
-        if (FXGL.getWorldProperties().intProperty("chickensKilled").getValue() == 1){
+        if (FXGL.getWorldProperties().intProperty("chickensKilled").getValue() == 2){
             FXGL.getWorldProperties().intProperty("chickensKilled").setValue(0);
             level +=1;
-            FXGL.setLevelFromMap("level3.tmx");
+            list = player.getComponent(playerComponent.class).potionList;
+            if (twoPlayers) {
+                list2 = player2.getComponent(playerComponent.class).potionList;
+            }
+            FXGL.setLevelFromMap("level2.tmx");
             dialogueLevel3();
             levelSwap = true;
-        }
-        if (FXGL.getWorldProperties().intProperty("bugsKilled").getValue() == 1){
+        }else if (FXGL.getWorldProperties().intProperty("bugsKilled").getValue() == 1){
             FXGL.getWorldProperties().intProperty("bugsKilled").setValue(0);
-            FXGL.setLevelFromMap("eindlevel.tmx");
+            list = player.getComponent(playerComponent.class).potionList;
+            if (twoPlayers) {
+                list2 = player2.getComponent(playerComponent.class).potionList;
+            }
+            FXGL.setLevelFromMap("level3.tmx");
+            level +=1;
+            dialogueLevel3();
+            levelSwap = true;
+        }else if (FXGL.getWorldProperties().intProperty("dinoKilled").getValue() == 2){
+            FXGL.getWorldProperties().intProperty("dinoKilled").setValue(0);
+            list = player.getComponent(playerComponent.class).potionList;
+            if (twoPlayers) {
+                list2 = player2.getComponent(playerComponent.class).potionList;
+            }
+            FXGL.setLevelFromMap("eindLevel.tmx");
             level +=1;
             dialogueLevel3();
             levelSwap = true;
         }
+
+        if (FXGL.getWorldProperties().intProperty("heikoKilled").getValue() == 1){
+            dialogueEnd();
+        }
+
         if (levelSwap) {
             objects = FXGL.getGameWorld().getEntitiesByType(testTypes.FOREST,testTypes.TREEDESPAWN, testTypes.STONEDESPAWN);
             player = FXGL.getGameWorld().getSingleton(testTypes.PLAYER);
+            player.getComponent(playerComponent.class).damage += 1;
+            player.getComponent(playerComponent.class).potionList = list;
             player.getComponent(HealthIntComponent.class).setValue(20);
             if (twoPlayers){
                 player2 = FXGL.getGameWorld().getSingleton(testTypes.PLAYERTWO);
+                player2.getComponent(playerComponent.class).damage += 1;
+                player2.getComponent(playerComponent.class).potionList= list2;
                 player2.getComponent(HealthIntComponent.class).setValue(20);
             }
             FXGL.getGameScene().getViewport().bindToEntity(player, width/2, height/2);
@@ -224,9 +261,9 @@ public class testApp extends GameApplication {
             if (level == 2){
                 textPixels.textProperty().bind(FXGL.getWorldProperties().intProperty("bugsKilled").asString());
             }else if(level == 3){
-                textPixels.textProperty().bind(FXGL.getWorldProperties().intProperty("bugsKilled").asString());
+                textPixels.textProperty().bind(FXGL.getWorldProperties().intProperty("dinoKilled").asString());
             }else{
-                textPixels.setText("");
+                textPixels.textProperty().bind(FXGL.getWorldProperties().intProperty("heikoKilled").asString());
             }
             levelSwap = false;
         }
@@ -304,6 +341,34 @@ public class testApp extends GameApplication {
             });
         }
     }
+
+    public void dialogueEnd(){
+        VBox content = new VBox();
+        playerComponent player1 = player.getComponent(playerComponent.class);
+        if (twoPlayers){
+            playerComponent playertwo = player2.getComponent(playerComponent.class);
+            content = new VBox(
+                    FXGL.getAssetLoader().loadTexture("heiko.png"),
+                    FXGL.getUIFactoryService().newText("je bent te sterk blablabla"),
+                    FXGL.getUIFactoryService().newText(""),
+                    FXGL.getUIFactoryService().newText(player1.naam+ " heeft " + player1.Score +" punten gescoord!"),
+                    FXGL.getUIFactoryService().newText(playertwo.naam+ " heeft " + playertwo.Score +" punten gescoord!")
+                    );
+        }else {
+            content = new VBox(
+                    FXGL.getAssetLoader().loadTexture("heiko.png"),
+                    FXGL.getUIFactoryService().newText("je bent te sterk blablabla"),
+                    FXGL.getUIFactoryService().newText(""),
+                    FXGL.getUIFactoryService().newText(player1.naam + " heeft " + player1.Score + " punten gescoord!")
+                    );
+        }
+
+        Button btnClose = FXGL.getUIFactoryService().newButton("Press to close");
+        btnClose.setPrefWidth(300);
+
+        FXGL.getDialogService().showBox("Heiko the wizard of assesment", content, btnClose);
+    }
+
 
     public void dialogueLevel1(){
         VBox content = new VBox(
