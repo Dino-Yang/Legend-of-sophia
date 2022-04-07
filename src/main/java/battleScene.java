@@ -13,6 +13,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.util.Duration;
+import javafx.util.Pair;
 
 import java.util.ArrayList;
 import java.util.Objects;
@@ -256,7 +257,6 @@ public class battleScene extends SubScene {
             } else{
                 beatMessage(1, "nothing", potionName);
             }
-
         }
     }
 
@@ -291,14 +291,45 @@ public class battleScene extends SubScene {
         }
     }
 
+    public Pair<Entity, Integer> playerChooser(){
+        Random rand = new Random();
+        int playerAttacked = rand.nextInt(2);
+        if (playerAttacked == 0){
+            return new Pair<Entity, Integer>(player, 0);
+        }else{
+            return new Pair<Entity, Integer>(playertwo, 1);
+        }
+    }
+
     public void monsterAttack() {
-        FXGL.getEngineTimer().runOnceAfter(() -> {
-            if (!playerTurn) {
-                playerHP.setValue(playerHP.getValue() - 2);
-                playerHPBar.setCurrentValue(playerHP.getValue());
-                this.playerTurn = true;
-            }
-        }, Duration.seconds(1));
+        var monsterEntity = (monster.getComponent(monsterComponent.class));
+        if (testApp.twoPlayers){
+            Pair<Entity, Integer> paar = playerChooser();
+            var spelerComp = paar.getKey().getComponent(HealthIntComponent.class);
+            FXGL.getEngineTimer().runOnceAfter(() -> {
+                if (!playerTurn) {
+                    spelerComp.setValue(spelerComp.getValue() - monster.getComponent(monsterComponent.class).damage);
+                    if (paar.getValue() == 0){
+                        playerHPBar.setCurrentValue(spelerComp.getValue());
+                    }else{
+                        player2HPBar.setCurrentValue(spelerComp.getValue());
+                    }
+                    text.setText(monsterEntity.naam + " hit " + paar.getKey().getComponent(playerComponent.class).naam
+                    + " for " + monsterEntity.damage +" damage!");
+                    this.playerTurn = true;
+                }
+            }, Duration.seconds(1));
+        }else {
+            FXGL.getEngineTimer().runOnceAfter(() -> {
+                if (!playerTurn) {
+                    playerHP.setValue(playerHP.getValue() - 2);
+                    playerHPBar.setCurrentValue(playerHP.getValue());
+                    text.setText(monsterEntity.naam + " hit " +player.getComponent(playerComponent.class).naam
+                            + " for " + monsterEntity.damage +" damage!");
+                    this.playerTurn = true;
+                }
+            }, Duration.seconds(1));
+        }
     }
 
     public void close(StackPane stackPane) {

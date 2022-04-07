@@ -10,9 +10,13 @@ public class monsterComponent extends Component {
     Random rand = new Random();
     private double timeTS = 0;
     String naam;
+    int damage;
 
-    public monsterComponent(String naam) {
+
+    public monsterComponent(String naam, int damage) {
         this.naam = naam;
+        this.damage = damage;
+
     }
 
     @Override

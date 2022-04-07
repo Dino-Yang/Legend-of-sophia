@@ -6,20 +6,17 @@ import com.almasb.fxgl.physics.CollisionHandler;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 
-
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 
 /*
 todo
+player 2 collision
 battle(crit change dodge chance)
-potion drop(on enemy death)
 level swap tussen levels
 main menu to playeraantal select to name input
 dino sprite vinden(argh)

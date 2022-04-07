@@ -96,7 +96,7 @@ public class testFactory extends Component implements EntityFactory {
                 .viewWithBBox("monster.png")
                 .type(testTypes.MONSTER)
                 .with(new CollidableComponent(true))
-                .with(new monsterComponent("monster"))
+                .with(new monsterComponent("monster",2))
                 .with(new HealthIntComponent(10))
                 .build();
     }
@@ -107,7 +107,7 @@ public class testFactory extends Component implements EntityFactory {
                 .viewWithBBox("chicken.png")
                 .type(testTypes.MONSTER)
                 .with(new CollidableComponent(true))
-                .with(new monsterComponent("chicken"))
+                .with(new monsterComponent("chicken",2))
                 .with(new HealthIntComponent(10))
                 .build();
     }
