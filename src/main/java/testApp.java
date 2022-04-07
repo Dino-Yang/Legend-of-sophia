@@ -24,8 +24,6 @@ public class testApp extends GameApplication {
     protected void initSettings(GameSettings settings) {
         settings.setWidth(width);
         settings.setHeight(height);
-        settings.setMainMenuEnabled(true);
-        settings.setSceneFactory(new UIfactory());
         settings.setTitle("Basic Game App");
         settings.setVersion("0.1");
     }
