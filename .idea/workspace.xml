@@ -4,15 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="935beec7-b7ce-41c4-973c-b429a1d7310b" name="Changes" comment="Added tree and character hitbox">
+    <list default="true" id="935beec7-b7ce-41c4-973c-b429a1d7310b" name="Changes" comment="Added heiko npc to level1">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/testApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/testApp.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/testFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/testFactory.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/assets/levels/level1.tmx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/levels/level1.tmx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/monsterComponent.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/monsterComponent.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/textures/heiko.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/textures/heiko.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/testApp$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/testApp$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/testApp.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/testApp.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/testFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/testFactory.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/testTypes.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/testTypes.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -100,7 +100,14 @@
       <option name="project" value="LOCAL" />
       <updated>1649331741476</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Added heiko npc to level1">
+      <created>1649334242919</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1649334242919</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -119,6 +126,7 @@
     <MESSAGE value="battleScene, spritesheet and level1(bad version)" />
     <MESSAGE value="level1, spawn on point, remove entity at combat" />
     <MESSAGE value="Added tree and character hitbox" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added tree and character hitbox" />
+    <MESSAGE value="Added heiko npc to level1" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added heiko npc to level1" />
   </component>
 </project>

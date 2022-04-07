@@ -123,16 +123,17 @@ public class testApp extends GameApplication {
     public void dialogue(){
         VBox content = new VBox(
                 FXGL.getAssetLoader().loadTexture("heiko.png"),
-                FXGL.getUIFactoryService().newText("Help"),
-                FXGL.getUIFactoryService().newText("ZORG"),
-                FXGL.getUIFactoryService().newText("BORG"),
-                FXGL.getUIFactoryService().newText("MORG")
+                FXGL.getUIFactoryService().newText("Hello there brave adventurerer, my name Heiko. Whats your name?"),
+                FXGL.getUIFactoryService().newText("Nice to meet you " + "something to get names" + "!"),
+                FXGL.getUIFactoryService().newText("I need your help. All these chickens a ravaging the forest."),
+                FXGL.getUIFactoryService().newText("This would be a great assesment for you, maybe I'll make you my"),
+                FXGL.getUIFactoryService().newText("student but only if you can kill 5 chickens for me.")
         );
 
-        Button btnClose = FXGL.getUIFactoryService().newButton("Press me to close");
+        Button btnClose = FXGL.getUIFactoryService().newButton("Press to close");
         btnClose.setPrefWidth(300);
 
-        FXGL.getDialogService().showBox("This is a customizable box", content, btnClose);
+        FXGL.getDialogService().showBox("Heiko the wizard of assesment", content, btnClose);
     }
 
     @Override
