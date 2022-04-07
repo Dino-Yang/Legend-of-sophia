@@ -12,6 +12,7 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
@@ -26,14 +27,16 @@ public class MainMenu extends FXGLMenu {
         super(type);
         int width = getAppWidth();
         int height = getAppHeight();
-//        var bg = new Rectangle(width, height, Color.RED);
-        Button button = new Button("Start");
-        button.setOnAction(e->{
+
+//        menu 1
+        Button startButton = new Button("Start");
+        startButton.setOnAction(e->{
             fireNewGame();
+
         });
 
-        Button button2 = new Button("Exit");
-        button2.setOnAction(e->{
+        Button exitButton = new Button("Exit");
+        exitButton.setOnAction(e->{
             fireExit();
         });
 
@@ -45,25 +48,48 @@ public class MainMenu extends FXGLMenu {
 
 
         Text titel = new Text("The Legend of Sophia");
-        button.setMinSize(200, 100);
-        button.setStyle("-fx-background-color: white");
-        button2.setMinSize(200, 100);
-        button2.setStyle("-fx-background-color: white");
-        button.setStyle("-fx-text-fill: black");
-        button2.setStyle("-fx-text-fill: black");
+        titel.setFont(Font.font("verdana",85));
+        titel.setFill(Color.WHITE);
+        startButton.setMinSize(150, 100);
+        startButton.setStyle("-fx-background-color: purple");
+        exitButton.setMinSize(150, 100);
+        exitButton.setStyle("-fx-background-color: purple");
+        startButton.setStyle("-fx-text-fill: black");
+        exitButton.setStyle("-fx-text-fill: black");
 
 
 
-        VBox vBox = new VBox(2);
-        vBox.setBackground(new Background(mainBackground));
-        vBox.getChildren().add(titel);
-        vBox.getChildren().add(button);
-        vBox.getChildren().add(button2);
-        getContentRoot().getChildren().add(vBox);
+        VBox mainMenu = new VBox(2);
+        mainMenu.setBackground(new Background(mainBackground));
+        mainMenu.getChildren().add(titel);
+        mainMenu.getChildren().add(startButton);
+        mainMenu.getChildren().add(exitButton);
+        getContentRoot().getChildren().add(mainMenu);
 
-        vBox.setAlignment(Pos.CENTER);
-        vBox.setMinWidth(width);
-        vBox.setMinHeight(height);
+        mainMenu.setAlignment(Pos.CENTER);
+        mainMenu.setMinWidth(width);
+        mainMenu.setMinHeight(height);
+
+//        menu2
+
+        VBox playersMenu = new VBox(2);
+        Button onePlayer = new Button("1 Player");
+        Button twoPlayer = new Button("2 Players");
+        playersMenu.getChildren().add(onePlayer);
+        playersMenu.getChildren().add(twoPlayer);
+        onePlayer.setOnAction(e->{
+
+        });
+        twoPlayer.setOnAction(e->{
+
+        });
+
+
+//        menu 3
+
+//        VBox namenMenuOnePlayer = new VBox(2);
+//        TextField naam
+
     }
 
 
