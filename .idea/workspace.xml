@@ -4,18 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="935beec7-b7ce-41c4-973c-b429a1d7310b" name="Changes" comment="rezised heiko and made him npc">
-      <change afterPath="$PROJECT_DIR$/src/main/java/UIfactory.java" afterDir="false" />
+    <list default="true" id="935beec7-b7ce-41c4-973c-b429a1d7310b" name="Changes" comment="All the eggs">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/MainMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/MainMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/battleScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/battleScene.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/testApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/testApp.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/testFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/testFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/levels/level1.tmx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/levels/level1.tmx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/testTypes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/testTypes.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/levels/eindlevel.tmx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/levels/eindlevel.tmx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/levels/level2.tmx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/levels/level2.tmx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/battleScene.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/battleScene.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/monsterComponent.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/monsterComponent.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/testApp$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/testApp$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/testApp.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/testApp.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/testFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/testFactory.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/testTypes.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/testTypes.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,6 +28,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
+        <option value="Enum" />
       </list>
     </option>
   </component>
@@ -40,7 +43,11 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Downloads/openjdk-11+28_windows-x64_bin/jdk-11" />
+    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -48,12 +55,27 @@
       <recent name="C:\Users\rickl\OneDrive - Hogeschool Leiden\propedeuse\Github\sophia\src\main\resources\assets\textures" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Rick\OneDrive - Hogeschool Leiden\propedeuse\Github\sophia\src\main\resources\assets\levels" />
       <recent name="C:\Users\rickl\OneDrive - Hogeschool Leiden\propedeuse\Github\sophia\src\main\resources\assets\levels" />
     </key>
   </component>
   <component name="RunManager" selected="Application.testApp">
+    <configuration name="Civ6MenuApp" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Civ6MenuApp" />
+      <module name="sophia" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Game" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Game" />
+      <module name="sophia" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="GameMenuDemo" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="GameMenuDemo" />
       <module name="sophia" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -69,6 +91,8 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.testApp" />
+        <item itemvalue="Application.GameMenuDemo" />
+        <item itemvalue="Application.Civ6MenuApp" />
         <item itemvalue="Application.Game" />
       </list>
     </recent_temporary>
@@ -117,7 +141,14 @@
       <option name="project" value="LOCAL" />
       <updated>1649337871093</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="All the eggs">
+      <created>1649341031178</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1649341031178</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -138,6 +169,7 @@
     <MESSAGE value="Added tree and character hitbox" />
     <MESSAGE value="Added heiko npc to level1" />
     <MESSAGE value="rezised heiko and made him npc" />
-    <option name="LAST_COMMIT_MESSAGE" value="rezised heiko and made him npc" />
+    <MESSAGE value="All the eggs" />
+    <option name="LAST_COMMIT_MESSAGE" value="All the eggs" />
   </component>
 </project>

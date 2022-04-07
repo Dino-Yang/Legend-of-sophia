@@ -23,6 +23,8 @@ public class testFactory extends Component implements EntityFactory {
 //                .type(testTypes.OBSTACLE)
 //                .build();
 //    }
+    public static String playerOneName;
+    public static String playerTwoName;
 
     @Spawns("obstacle")
     public Entity newForest(SpawnData data){
@@ -58,19 +60,8 @@ public class testFactory extends Component implements EntityFactory {
                 .viewWithBBox("heiko.png")
                 .type(testTypes.EINDBAAS)
                 .with(new CollidableComponent(true))
-                .with(new monsterComponent("heiko",8, 25))
-                .with(new HealthIntComponent(25))
-                .build();
-    }
-
-    @Spawns("dino")
-    public Entity newDino(SpawnData data){
-        return FXGL.entityBuilder(data)
-                .viewWithBBox("dino.png")
-                .type(testTypes.MONSTER)
-                .with(new CollidableComponent(true))
-                .with(new monsterComponent("dino",6,20))
-                .with(new HealthIntComponent(20))
+                .with(new monsterComponent("heiko",8, 30))
+                .with(new HealthIntComponent(30))
                 .build();
     }
 
@@ -82,7 +73,7 @@ public class testFactory extends Component implements EntityFactory {
                 .type(testTypes.PLAYER)
                 .with((new CollidableComponent(true)))
                 .with(new HealthIntComponent(20))
-                .with(new playerComponent("qwer",1, 3, 0))
+                .with(new playerComponent(playerOneName,1, 3, 0))
                 .build();
     }
 
@@ -95,7 +86,7 @@ public class testFactory extends Component implements EntityFactory {
                     .type(testTypes.PLAYERTWO)
                     .with((new CollidableComponent(true)))
                     .with(new HealthIntComponent(20))
-                    .with(new playerComponent("blabla",2,3, 0))
+                    .with(new playerComponent(playerTwoName,2,3, 0))
                     .build();
         }
         return FXGL.entityBuilder(data)
@@ -131,6 +122,16 @@ public class testFactory extends Component implements EntityFactory {
                 .with(new CollidableComponent(true))
                 .with(new monsterComponent("chicken",2,10))
                 .with(new HealthIntComponent(10))
+                .build();
+    }
+    @Spawns("dinosaur")
+    public Entity newDinosaur(SpawnData data){
+        return FXGL.entityBuilder(data)
+                .viewWithBBox("dinosaur.png")
+                .type(testTypes.MONSTER)
+                .with(new CollidableComponent(true))
+                .with(new monsterComponent("dinosaur",4,19))
+                .with(new HealthIntComponent(19))
                 .build();
     }
 }

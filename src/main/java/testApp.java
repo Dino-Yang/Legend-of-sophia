@@ -32,6 +32,7 @@ public class testApp extends GameApplication {
     private int height = 720;
     public boolean levelSwap = false;
     public static boolean twoPlayers = true;
+    
     public int level =1;
     public Text textPixels = new Text();
     ArrayList<potion> list;
@@ -44,8 +45,8 @@ public class testApp extends GameApplication {
         settings.setHeight(height);
         settings.setMainMenuEnabled(true);
         settings.setSceneFactory(new UIfactory());
-        settings.setTitle("Basic Game App");
-        settings.setVersion("0.1");
+        settings.setTitle("The Legend Of Sophia");
+        settings.setVersion("");
     }
 
     @Override
@@ -376,7 +377,7 @@ public class testApp extends GameApplication {
         VBox content = new VBox(
                 FXGL.getAssetLoader().loadTexture("heiko.png"),
                 FXGL.getUIFactoryService().newText("Hello there brave adventurerer, my name Heiko. Whats your name?"),
-                FXGL.getUIFactoryService().newText("Nice to meet you " + "something to get names" + "!"),
+                FXGL.getUIFactoryService().newText("Nice to meet you " + player.getComponent(playerComponent.class).naam + "!"),
                 FXGL.getUIFactoryService().newText("I need your help. All these chickens a ravaging the forest."),
                 FXGL.getUIFactoryService().newText("This would be a great assesment for you, maybe I'll make you my"),
                 FXGL.getUIFactoryService().newText("student but only if you can kill 5 chickens for me.")
@@ -402,7 +403,10 @@ public class testApp extends GameApplication {
 
     public void dialogueLevel2(){
         VBox content = new VBox(
-                FXGL.getAssetLoader().loadTexture("heiko.png")
+                FXGL.getAssetLoader().loadTexture("heiko.png"),
+                FXGL.getUIFactoryService().newText("So we meet again, i did not think you would be able to kill all those bugs, but i guess i underestimated you."),
+                FXGL.getUIFactoryService().newText("but there is another problem I need you to face. Only this one is way harder than the other quests you have faced before."),
+                FXGL.getUIFactoryService().newText("I need you to kill all the dinosaurs that walk around here.. they annoy me because they dont want to an assesment")
                 );
 
         Button btnClose = FXGL.getUIFactoryService().newButton("Press to close");
@@ -414,7 +418,9 @@ public class testApp extends GameApplication {
     public void dialogueLevel3(){
         VBox content = new VBox(
                 FXGL.getAssetLoader().loadTexture("heiko.png"),
-                FXGL.getUIFactoryService().newText("Hello there brave asdfasdfasdf, my name Heiko. Whats your name?")
+                FXGL.getUIFactoryService().newText("Hello again, thank you so much for handling all those chickens,"),
+                FXGL.getUIFactoryService().newText("but i have another quest for you, there seems to be a big plague of bugs in this level."),
+                FXGL.getUIFactoryService().newText("Please help me get rid of them by killing 4 of them. Good Luck!")
         );
 
         Button btnClose = FXGL.getUIFactoryService().newButton("Press to close");
