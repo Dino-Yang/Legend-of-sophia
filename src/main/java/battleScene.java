@@ -169,6 +169,7 @@ public class battleScene extends SubScene {
     public void close(StackPane stackPane) {
         this.getContentRoot().getChildren().remove(stackPane);
         FXGL.getSceneService().popSubScene();
+        FXGL.setLevelFromMap("eindlevel.tmx");
 
     }
 }

@@ -36,7 +36,8 @@ public class testFactory extends Component implements EntityFactory {
     @Spawns("npc")
     public Entity newNpc(SpawnData data){
         return FXGL.entityBuilder(data)
-                .bbox(new HitBox(BoundingShape.box(data.<Integer>get("width"),data.<Integer>get("height"))))
+                .view("tree.png")
+                .bbox(new HitBox(BoundingShape.box(30,30)))
                 .type(testTypes.NPC)
                 .with(new CollidableComponent(true))
                 .build();

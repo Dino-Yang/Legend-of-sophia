@@ -97,7 +97,11 @@ public class testApp extends GameApplication {
             // order of types is the same as passed into the constructor
             @Override
             protected void onCollisionBegin(Entity player, Entity npc) {
+                objects.remove(FXGL.getGameWorld().getSingleton(testTypes.TREEDESPAWN));
+                FXGL.getGameWorld().getSingleton(testTypes.TREEDESPAWN).removeFromWorld();
+
                 dialogue();
+
             }
         });
     }
@@ -114,7 +118,6 @@ public class testApp extends GameApplication {
         Button btnClose = FXGL.getUIFactoryService().newButton("Press me to close");
         btnClose.setPrefWidth(300);
 
-        FXGL.getDialogService().showBox("This is a customizable box", content, btnClose);
         FXGL.getDialogService().showBox("This is a customizable box", content, btnClose);
     }
 
