@@ -9,6 +9,11 @@ import java.util.Random;
 public class monsterComponent extends Component {
     Random rand = new Random();
     private double timeTS = 0;
+    String naam;
+
+    public monsterComponent(String naam) {
+        this.naam = naam;
+    }
 
     @Override
     public void onUpdate(double tpf) {

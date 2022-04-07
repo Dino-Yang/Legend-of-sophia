@@ -4,10 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="935beec7-b7ce-41c4-973c-b429a1d7310b" name="Changes" comment="jkljlkj">
+    <list default="true" id="935beec7-b7ce-41c4-973c-b429a1d7310b" name="Changes" comment="rezised heiko and made him npc">
+      <change afterPath="$PROJECT_DIR$/src/main/java/UIfactory.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/MainMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/MainMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/SceneFactory.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/battleScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/battleScene.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/testApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/testApp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/testFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/testFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/levels/level1.tmx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/levels/level1.tmx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/battleScene.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/battleScene.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/testApp$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/testApp$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/testApp.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/testApp.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/testFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/testFactory.class" afterDir="false" />
@@ -36,7 +41,6 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="node.js.selected.package.tslint" value="(autodetect)" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -57,7 +61,7 @@
     </configuration>
     <configuration name="testApp" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="testApp" />
-      <module name="Legend-of-sophia" />
+      <module name="sophia" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -99,7 +103,21 @@
       <option name="project" value="LOCAL" />
       <updated>1649331741476</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Added heiko npc to level1">
+      <created>1649334242919</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1649334242919</updated>
+    </task>
+    <task id="LOCAL-00005" summary="rezised heiko and made him npc">
+      <created>1649337871093</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1649337871093</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -118,6 +136,8 @@
     <MESSAGE value="battleScene, spritesheet and level1(bad version)" />
     <MESSAGE value="level1, spawn on point, remove entity at combat" />
     <MESSAGE value="Added tree and character hitbox" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added tree and character hitbox" />
+    <MESSAGE value="Added heiko npc to level1" />
+    <MESSAGE value="rezised heiko and made him npc" />
+    <option name="LAST_COMMIT_MESSAGE" value="rezised heiko and made him npc" />
   </component>
 </project>
