@@ -37,7 +37,7 @@ public class MainMenu extends FXGLMenu {
             fireExit();
         });
 
-        BackgroundImage mainBackground = new BackgroundImage(new Image("assets/textures/posterIPOSEcw.png", FXGL.getAppHeight(), FXGL.getAppWidth(), true, false),
+        BackgroundImage mainBackground = new BackgroundImage(new Image("assets/textures/background/clouds/achtergrondMenu.jpg", FXGL.getAppHeight(), FXGL.getAppWidth(), true, false),
                 BackgroundRepeat.NO_REPEAT,
                 BackgroundRepeat.NO_REPEAT,
                 BackgroundPosition.DEFAULT,
@@ -61,7 +61,6 @@ public class MainMenu extends FXGLMenu {
         vBox.setAlignment(Pos.CENTER);
         vBox.setMinWidth(width);
         vBox.setMinHeight(height);
-//        vBox.setBackground(new Background(new BackgroundFill(Color.PURPLE, CornerRadii.EMPTY, Insets.EMPTY)));
     }
 
 
