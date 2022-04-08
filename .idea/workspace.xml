@@ -4,10 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="935beec7-b7ce-41c4-973c-b429a1d7310b" name="Changes" comment="menu gestyled">
+    <list default="true" id="935beec7-b7ce-41c4-973c-b429a1d7310b" name="Changes" comment="achtergrond foto toegevoegd">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/save.sav" beforeDir="false" afterPath="$PROJECT_DIR$/save.sav" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/MainMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/MainMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/battleScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/battleScene.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/testApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/testApp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/testFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/testFactory.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/assets/levels/eindlevel.tmx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/levels/eindlevel.tmx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/levels/level2.tmx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/levels/level2.tmx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/battleScene.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/battleScene.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/testApp$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/testApp$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/testApp.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/testApp.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/testFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/testFactory.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,8 +88,10 @@
       </method>
     </configuration>
     <configuration name="testApp" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="ALTERNATIVE_JRE_PATH" value="17" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <option name="MAIN_CLASS_NAME" value="testApp" />
-      <module name="Legend-of-sophia" />
+      <module name="sophia" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -180,21 +191,7 @@
       <option name="project" value="LOCAL" />
       <updated>1649404175788</updated>
     </task>
-    <task id="LOCAL-00012" summary="menu gestyled">
-      <created>1649406258833</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1649406258833</updated>
-    </task>
-    <task id="LOCAL-00013" summary="menu gestyled">
-      <created>1649406971433</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1649406971433</updated>
-    </task>
-    <option name="localTasksCounter" value="14" />
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -221,7 +218,6 @@
     <MESSAGE value="spellingsfoutjes" />
     <MESSAGE value="achtergrond foto van menu veranderd" />
     <MESSAGE value="achtergrond foto toegevoegd" />
-    <MESSAGE value="menu gestyled" />
-    <option name="LAST_COMMIT_MESSAGE" value="menu gestyled" />
+    <option name="LAST_COMMIT_MESSAGE" value="achtergrond foto toegevoegd" />
   </component>
 </project>

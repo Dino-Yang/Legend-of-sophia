@@ -16,10 +16,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.util.Pair;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
+import java.util.*;
 
 
 /*
@@ -36,11 +33,13 @@ public class testApp extends GameApplication {
     private int height = 720;
     public boolean levelSwap = false;
     public static boolean twoPlayers = true;
-    ArrayList<Pair<String,Integer>> scorenLijst = new ArrayList<>();
+    static ArrayList<Pair<String,Integer>> scorenLijst = new ArrayList<>();
     public int level =1;
     public Text textPixels = new Text();
     ArrayList<potion> list;
     ArrayList<potion> list2;
+    public static int score1 = 0;
+    public static int score2 = 0;
 
 
     @Override
@@ -221,7 +220,7 @@ public class testApp extends GameApplication {
                 list2 = player2.getComponent(playerComponent.class).potionList;
             }
             FXGL.setLevelFromMap("level2.tmx");
-            dialogueLevel3();
+            dialogueLevel2();
             levelSwap = true;
         }else if (FXGL.getWorldProperties().intProperty("bugsKilled").getValue() == 5){
             FXGL.getWorldProperties().intProperty("bugsKilled").setValue(0);
@@ -241,7 +240,6 @@ public class testApp extends GameApplication {
             }
             FXGL.setLevelFromMap("eindLevel.tmx");
             level +=1;
-            dialogueLevel3();
             levelSwap = true;
         }
 
@@ -304,7 +302,7 @@ public class testApp extends GameApplication {
             // order of types is the same as passed into the constructor
             @Override
             protected void onCollisionBegin(Entity asdf, Entity monster) {
-                dialogueLevel2();
+                dialogueEnd();
                 FXGL.getSceneService().pushSubScene(new battleScene(player,player2, monster));
             }
         });
@@ -315,7 +313,7 @@ public class testApp extends GameApplication {
                 // order of types is the same as passed into the constructor
                 @Override
                 protected void onCollisionBegin(Entity asdf, Entity monster) {
-                    dialogueLevel2();
+                    dialogueEnd();
                     FXGL.getSceneService().pushSubScene(new battleScene(player,player2, monster));
                 }
             });
@@ -351,20 +349,20 @@ public class testApp extends GameApplication {
 
     public void dialogueEnd(){
         VBox content = new VBox();
+        FXGL.getSaveLoadService().saveAndWriteTask("save.sav").run();
         playerComponent player1 = player.getComponent(playerComponent.class);
         if (twoPlayers){
             playerComponent playertwo = player2.getComponent(playerComponent.class);
             content = new VBox(
                     FXGL.getAssetLoader().loadTexture("heiko.png"),
-                    FXGL.getUIFactoryService().newText("je bent te sterk blablabla"),
-                    FXGL.getUIFactoryService().newText(""),
-                    FXGL.getUIFactoryService().newText(player1.naam+ " heeft " + player1.Score +" punten gescoord!"),
+                    FXGL.getUIFactoryService().newText("You have beaten me."),
+                    FXGL.getUIFactoryService().newText(player1.naam+ " heeft " + score2 +" punten gescoord!"),
                     FXGL.getUIFactoryService().newText(playertwo.naam+ " heeft " + playertwo.Score +" punten gescoord!")
                     );
         }else {
             content = new VBox(
                     FXGL.getAssetLoader().loadTexture("heiko.png"),
-                    FXGL.getUIFactoryService().newText("je bent te sterk blablabla"),
+                    FXGL.getUIFactoryService().newText("You have beaten me."),
                     FXGL.getUIFactoryService().newText(""),
                     FXGL.getUIFactoryService().newText(player1.naam + " heeft " + player1.Score + " punten gescoord!")
                     );
@@ -397,10 +395,6 @@ public class testApp extends GameApplication {
                 Pair<String, Integer> playerPair= new Pair<>(playerName,playerScore);
                 scorenLijst.add(playerPair);
                 bundle.put("lijst", scorenLijst);
-                System.out.println("save");
-//                list.forEach(System.out::println);
-
-                // give the bundle to data file
                 data.putBundle(bundle);
             }
 
@@ -409,18 +403,13 @@ public class testApp extends GameApplication {
                 // get your previously saved bundle
                 var bundle = data.getBundle("gameData");
                 ArrayList<Pair<String,Integer>> oldList = bundle.get("lijst");
-                System.out.println("load");
-//                oldList.forEach(System.out::println);
                 scorenLijst.addAll(oldList);
-//                scorenLijst.forEach(System.out::println);
+                Collections.sort(scorenLijst, Comparator.comparing(p -> -p.getValue()));
             }
         });
     }
 
     public void dialogueLevel1(){
-        FXGL.getSaveLoadService().saveAndWriteTask("save.sav").run();
-        FXGL.getSaveLoadService().readAndLoadTask("save.sav").run();
-        FXGL.getSaveLoadService().saveAndWriteTask("save.sav").run();
         VBox content = new VBox(
                 FXGL.getAssetLoader().loadTexture("heiko.png"),
                 FXGL.getUIFactoryService().newText("Hello there brave adventurer, my name is Heiko. What is your name?"),
@@ -451,9 +440,9 @@ public class testApp extends GameApplication {
     public void dialogueLevel2(){
         VBox content = new VBox(
                 FXGL.getAssetLoader().loadTexture("heiko.png"),
-                FXGL.getUIFactoryService().newText("So we meet again, i did not think you would be able to kill all those bugs, but i guess i underestimated you."),
-                FXGL.getUIFactoryService().newText("but there is another problem I need you to face. Only this one is way harder than the other quests you have faced before."),
-                FXGL.getUIFactoryService().newText("I need you to kill all the dinosaurs that walk around here.. they annoy me because they dont want to an assessment")
+                FXGL.getUIFactoryService().newText("Hello again, thank you so much for handling all those chickens,"),
+                FXGL.getUIFactoryService().newText("but i have another quest for you, there seems to be a big plague of bugs in this level."),
+                FXGL.getUIFactoryService().newText("Please help me get rid of them by killing 5 of them. Good Luck!")
                 );
 
         Button btnClose = FXGL.getUIFactoryService().newButton("Press to close");
@@ -465,9 +454,9 @@ public class testApp extends GameApplication {
     public void dialogueLevel3(){
         VBox content = new VBox(
                 FXGL.getAssetLoader().loadTexture("heiko.png"),
-                FXGL.getUIFactoryService().newText("Hello again, thank you so much for handling all those chickens,"),
-                FXGL.getUIFactoryService().newText("but i have another quest for you, there seems to be a big plague of bugs in this level."),
-                FXGL.getUIFactoryService().newText("Please help me get rid of them by killing 4 of them. Good Luck!")
+                FXGL.getUIFactoryService().newText("So we meet again, i did not think you would be able to kill all those bugs, but i guess i underestimated you."),
+                FXGL.getUIFactoryService().newText("but there is another problem I need you to face. Only this one is way harder than the other quests you have faced before."),
+                FXGL.getUIFactoryService().newText("I need you to kill 5 of the dinosaurs that walk around here.. they annoy me because they dont want to an assessment")
         );
 
         Button btnClose = FXGL.getUIFactoryService().newButton("Press to close");
@@ -484,9 +473,8 @@ public class testApp extends GameApplication {
         if (twoPlayers){
             player2 = FXGL.getGameWorld().getSingleton(testTypes.PLAYERTWO);
         }
-//        testTypes.PLAYERS = ;
+        FXGL.play("intromusic.wav");
         objects = FXGL.getGameWorld().getEntitiesByType(testTypes.FOREST,testTypes.TREEDESPAWN);
-//        FXGL.play("intromusic.wav");
         FXGL.getGameScene().getViewport().bindToEntity(player, width/2, height/2);
         FXGL.getGameScene().getViewport().setZoom(1.8);
     }

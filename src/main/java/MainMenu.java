@@ -32,6 +32,20 @@ public class MainMenu extends FXGLMenu {
         titel.setFont(Font.font("verdana",85));
         titel.setFill(Color.WHITE);
 
+        //Leaderboard
+//        FXGL.getSaveLoadService().readAndLoadTask("save.sav").run();
+        VBox leaderboard = new VBox();
+        Button closeButton = new Button("Close");
+        leaderboard.getChildren().add(closeButton);
+        leaderboard.setAlignment(Pos.CENTER);
+        leaderboard.setMinHeight(height);
+        leaderboard.setMinWidth(width);
+        leaderboard.setBackground(new Background(mainBackground));
+        leaderboard.getStylesheets().add(
+                getClass().getResource("test.css").toExternalForm());
+
+
+
         Button startingButton = new Button("Start");
         Button startingeButton = new Button("Start");
 
@@ -44,20 +58,11 @@ public class MainMenu extends FXGLMenu {
         VBox namenMenuTwoPlayers = new VBox(2);
         namenMenuTwoPlayers.getStylesheets().add(
                 getClass().getResource("test.css").toExternalForm());
-
         namenMenuTwoPlayers.getChildren().addAll(menuVierTitel, naamInputTwee, naamInputDrie, startingeButton);
         namenMenuTwoPlayers.setAlignment(Pos.CENTER);
         namenMenuTwoPlayers.setMinHeight(height);
         namenMenuTwoPlayers.setMinWidth(width);
         namenMenuTwoPlayers.setBackground(new Background(mainBackground));
-        startingeButton.setOnAction(e->{
-//            Namen doorgeven en aantal spelers doorgeven
-            testApp.twoPlayers = true;
-            testFactory.playerOneName = naamInputTwee.getText();
-            testFactory.playerTwoName = naamInputDrie.getText();
-
-            fireNewGame();
-        });
 
 
         //        menu 3
@@ -73,13 +78,6 @@ public class MainMenu extends FXGLMenu {
         namenMenuOnePlayer.setMinHeight(height);
         namenMenuOnePlayer.setMinWidth(width);
         namenMenuOnePlayer.setBackground(new Background(mainBackground));
-        startingButton.setOnAction(e->{
-//            Namen doorgeven en aantal spelers doorgeven
-            testApp.twoPlayers = false;
-            testFactory.playerOneName = naamInput.getText();
-
-            fireNewGame();
-        });
 
 
 //        menu2
@@ -121,6 +119,7 @@ public class MainMenu extends FXGLMenu {
         Region spacer = new Region();
         Label titel2 = new Label("The Legend of Sophia");
         Button exitButton = new Button("Exit");
+        Button leaderboardButton = new Button("Leaderboard");
         Button startButton = new Button("Start");
 
 
@@ -133,28 +132,61 @@ public class MainMenu extends FXGLMenu {
 
         mainMenu.setSpacing(20);
         mainMenu.setBackground(new Background(mainBackground));
-        mainMenu.getChildren().addAll(titel2, startButton, exitButton, spacer);
+        mainMenu.getChildren().addAll(titel2, startButton, leaderboardButton, exitButton, spacer);
         getContentRoot().getChildren().add(mainMenu);
 
         mainMenu.setAlignment(Pos.CENTER);
         mainMenu.setMinWidth(width);
         mainMenu.setMinHeight(height);
         startButton.setOnAction(e -> {
+            FXGL.getSaveLoadService().readAndLoadTask("save.sav").run();
             getContentRoot().getChildren().remove(mainMenu);
             getContentRoot().getChildren().add(playersMenu);
         });
-        exitButton.setOnAction(e -> {
+        leaderboardButton.setOnAction(e -> {
+            testApp.scorenLijst.clear();
+            FXGL.getSaveLoadService().readAndLoadTask("save.sav").run();
+            getContentRoot().getChildren().remove(mainMenu);
+            leaderboard.getChildren().clear();
+            if (testApp.scorenLijst.size() >= 3){
+                for (int i = 0; i < 3; i++){
+                    if (testApp.scorenLijst.get(i) != null) {
+                        Label label = new Label(testApp.scorenLijst.get(i).getKey() + "      " + testApp.scorenLijst.get(i).getValue());
+                        leaderboard.getChildren().add(label);
+                    }
+                }
+            }
+            leaderboard.getChildren().add(closeButton);
+            getContentRoot().getChildren().add(leaderboard);
+
+        });
+
+        exitButton.setOnAction(e ->{
             fireExit();
         });
+        closeButton.setOnAction(e->{
+            getContentRoot().getChildren().remove(leaderboard);
+            getContentRoot().getChildren().add(mainMenu);
+        });
 
-        startButton.setOnAction(e->{
-//            fireNewGame();
-//            playersMenu.isVisible(true);
-//            playersMenu.setVisible(true);
-//            mainMenu.setVisible(false);
-            getContentRoot().getChildren().add(playersMenu);
-            getContentRoot().getChildren().remove(mainMenu);
+        startingButton.setOnAction(e->{
+//            Namen doorgeven en aantal spelers doorgeven
+            testApp.twoPlayers = false;
+            testFactory.playerOneName = naamInput.getText();
+            getContentRoot().getChildren().remove(namenMenuOnePlayer);
+            getContentRoot().getChildren().add(mainMenu);
 
+            fireNewGame();
+        });
+
+        startingeButton.setOnAction(e->{
+//            Namen doorgeven en aantal spelers doorgeven
+            testApp.twoPlayers = true;
+            testFactory.playerOneName = naamInputTwee.getText();
+            testFactory.playerTwoName = naamInputDrie.getText();
+            getContentRoot().getChildren().remove(namenMenuTwoPlayers);
+            getContentRoot().getChildren().add(mainMenu);
+            fireNewGame();
         });
 
 

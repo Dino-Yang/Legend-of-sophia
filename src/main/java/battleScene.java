@@ -62,7 +62,7 @@ public class battleScene extends SubScene {
         Texture player2Image = FXGL.getAssetLoader().loadTexture("linkBattle.png");
         int width = FXGL.getAppWidth();
         int height = FXGL.getAppHeight();
-        var bg = new Rectangle(width, height, Color.RED);
+        var bg = new Rectangle(width, height, Color.DARKGRAY);
         monsterHP = monster.getComponent(HealthIntComponent.class);
         playerHP = player.getComponent(HealthIntComponent.class);
         monsterHPBar.setMaxValue(monster.getComponent(monsterComponent.class).maxHP);
@@ -344,21 +344,21 @@ public class battleScene extends SubScene {
             if (monsterHP.getValue() <= 0) {
                 if (Objects.equals(monster.getComponent(monsterComponent.class).naam, "chicken")){
                     FXGL.inc("chickensKilled", +1);
-                    player.getComponent(playerComponent.class).Score += 10;
+                    testApp.score1+= 10;
                     if (testApp.twoPlayers){
-                        playertwo.getComponent(playerComponent.class).Score += 10;
+                        testApp.score2+= 10;
                     }
                 }else if(Objects.equals(monster.getComponent(monsterComponent.class).naam, "bug")){
                     FXGL.inc("bugsKilled", +1);
-                    player.getComponent(playerComponent.class).Score += 20;
+                    testApp.score1 += 20;
                     if (testApp.twoPlayers){
-                        playertwo.getComponent(playerComponent.class).Score += 20;
+                        testApp.score2+= 20;
                     }
                 }else if(Objects.equals(monster.getComponent(monsterComponent.class).naam, "dino")){
                     FXGL.inc("dinoKilled", +1);
-                    player.getComponent(playerComponent.class).Score += 30;
+                    testApp.score1 += 30;
                     if (testApp.twoPlayers){
-                        playertwo.getComponent(playerComponent.class).Score += 30;
+                        testApp.score2+= 30;
                     }
                 }
                 else if(Objects.equals(monster.getComponent(monsterComponent.class).naam, "heiko")){

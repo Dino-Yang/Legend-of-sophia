@@ -109,7 +109,7 @@ public class testFactory extends Component implements EntityFactory {
                 .viewWithBBox("monster.png")
                 .type(testTypes.MONSTER)
                 .with(new CollidableComponent(true))
-                .with(new monsterComponent("Bug",4,15))
+                .with(new monsterComponent("bug",4,15))
                 .with(new HealthIntComponent(15))
                 .build();
     }
@@ -120,7 +120,7 @@ public class testFactory extends Component implements EntityFactory {
                 .viewWithBBox("chicken.png")
                 .type(testTypes.MONSTER)
                 .with(new CollidableComponent(true))
-                .with(new monsterComponent("Chicken",2,10))
+                .with(new monsterComponent("chicken",2,10))
                 .with(new HealthIntComponent(10))
                 .build();
     }
@@ -130,7 +130,7 @@ public class testFactory extends Component implements EntityFactory {
                 .viewWithBBox("dino.png")
                 .type(testTypes.MONSTER)
                 .with(new CollidableComponent(true))
-                .with(new monsterComponent("Dino",4,19))
+                .with(new monsterComponent("dino",4,19))
                 .with(new HealthIntComponent(19))
                 .build();
     }
