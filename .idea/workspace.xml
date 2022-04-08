@@ -6,9 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="935beec7-b7ce-41c4-973c-b429a1d7310b" name="Changes" comment="All the eggs">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/MainMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/MainMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/testFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/testFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/levels/level2.tmx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/levels/level2.tmx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/testApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/testApp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/testApp.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/testApp.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/testFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/testFactory.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,7 +74,7 @@
     </configuration>
     <configuration name="testApp" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="testApp" />
-      <module name="sophia" />
+      <module name="Legend-of-sophia" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>

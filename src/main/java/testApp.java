@@ -376,17 +376,17 @@ public class testApp extends GameApplication {
     public void dialogueLevel1(){
         VBox content = new VBox(
                 FXGL.getAssetLoader().loadTexture("heiko.png"),
-                FXGL.getUIFactoryService().newText("Hello there brave adventurerer, my name Heiko. Whats your name?"),
+                FXGL.getUIFactoryService().newText("Hello there brave adventurer, my name is Heiko. What is your name?"),
                 FXGL.getUIFactoryService().newText("Nice to meet you " + player.getComponent(playerComponent.class).naam + "!"),
-                FXGL.getUIFactoryService().newText("I need your help. All these chickens a ravaging the forest."),
-                FXGL.getUIFactoryService().newText("This would be a great assesment for you, maybe I'll make you my"),
+                FXGL.getUIFactoryService().newText("I need your help. All these chickens are ravaging the forest."),
+                FXGL.getUIFactoryService().newText("This would be a great assessment for you, maybe I'll make you my"),
                 FXGL.getUIFactoryService().newText("student but only if you can kill 5 chickens for me.")
         );
 
         Button btnClose = FXGL.getUIFactoryService().newButton("Press to close");
         btnClose.setPrefWidth(300);
 
-        FXGL.getDialogService().showBox("Heiko the wizard of assesment", content, btnClose);
+        FXGL.getDialogService().showBox("Heiko the wizard of assessment", content, btnClose);
     }
 
     public void dialogueDeath(Entity player){
@@ -398,7 +398,7 @@ public class testApp extends GameApplication {
         Button btnClose = FXGL.getUIFactoryService().newButton("Press to close");
         btnClose.setPrefWidth(300);
 
-        FXGL.getDialogService().showBox("Heiko the wizard of assesment", content, btnClose);
+        FXGL.getDialogService().showBox("Heiko the wizard of assessment", content, btnClose);
     }
 
     public void dialogueLevel2(){
@@ -406,13 +406,13 @@ public class testApp extends GameApplication {
                 FXGL.getAssetLoader().loadTexture("heiko.png"),
                 FXGL.getUIFactoryService().newText("So we meet again, i did not think you would be able to kill all those bugs, but i guess i underestimated you."),
                 FXGL.getUIFactoryService().newText("but there is another problem I need you to face. Only this one is way harder than the other quests you have faced before."),
-                FXGL.getUIFactoryService().newText("I need you to kill all the dinosaurs that walk around here.. they annoy me because they dont want to an assesment")
+                FXGL.getUIFactoryService().newText("I need you to kill all the dinosaurs that walk around here.. they annoy me because they dont want to an assessment")
                 );
 
         Button btnClose = FXGL.getUIFactoryService().newButton("Press to close");
         btnClose.setPrefWidth(300);
 
-        FXGL.getDialogService().showBox("Heiko the wizard of assesment", content, btnClose);
+        FXGL.getDialogService().showBox("Heiko the wizard of assessment", content, btnClose);
     }
 
     public void dialogueLevel3(){
@@ -426,7 +426,7 @@ public class testApp extends GameApplication {
         Button btnClose = FXGL.getUIFactoryService().newButton("Press to close");
         btnClose.setPrefWidth(300);
 
-        FXGL.getDialogService().showBox("Heiko the wizard of assesment", content, btnClose);
+        FXGL.getDialogService().showBox("Heiko the wizard of assessment", content, btnClose);
     }
 
     @Override
