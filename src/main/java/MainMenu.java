@@ -25,7 +25,7 @@ public class MainMenu extends FXGLMenu {
 
 
 
-        BackgroundImage mainBackground = new BackgroundImage(new Image("assets/textures/background/clouds/posterIPOSEcw.png", FXGL.getAppHeight() * 1.8, FXGL.getAppWidth(), true, true),
+        BackgroundImage mainBackground = new BackgroundImage(new Image("assets/textures/background/clouds/achtergrondMenu.jpg", FXGL.getAppHeight() * 1.8, FXGL.getAppWidth(), true, true),
                 BackgroundRepeat.NO_REPEAT,
                 BackgroundRepeat.NO_REPEAT,
                 BackgroundPosition.CENTER,

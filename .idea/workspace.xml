@@ -4,11 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="935beec7-b7ce-41c4-973c-b429a1d7310b" name="Changes" comment="All the eggs">
+    <list default="true" id="935beec7-b7ce-41c4-973c-b429a1d7310b" name="Changes" comment="spellingsfoutjes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/testApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/testApp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/save.sav" beforeDir="false" afterPath="$PROJECT_DIR$/save.sav" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/MainMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/MainMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/testApp$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/testApp$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/testApp.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/testApp.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/testFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/testFactory.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,6 +36,10 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="last_opened_file_path" value="$USER_HOME$/Downloads/openjdk-11+28_windows-x64_bin/jdk-11" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -153,7 +158,14 @@
       <option name="project" value="LOCAL" />
       <updated>1649373413291</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="spellingsfoutjes">
+      <created>1649402986081</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1649402986081</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -177,6 +189,7 @@
     <MESSAGE value="All the eggs" />
     <MESSAGE value="Player naming, menus" />
     <MESSAGE value="menu style change" />
-    <option name="LAST_COMMIT_MESSAGE" value="menu style change" />
+    <MESSAGE value="spellingsfoutjes" />
+    <option name="LAST_COMMIT_MESSAGE" value="spellingsfoutjes" />
   </component>
 </project>
