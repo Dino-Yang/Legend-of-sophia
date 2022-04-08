@@ -127,7 +127,6 @@ public class MainMenu extends FXGLMenu {
             getContentRoot().getChildren().remove(mainMenu);
             getContentRoot().getChildren().add(playersMenu);
         });
-
         exitButton.setOnAction(e -> {
             fireExit();
         });
