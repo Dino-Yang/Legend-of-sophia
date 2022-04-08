@@ -1,0 +1,14 @@
+.button {
+    -fx-background-color: #948a54;
+    -fx-background-radius:20px;
+    -fx-border-color:black;
+    -fx-border-width: 2;
+    -fx-border-radius: 20px;
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+}
+
+.label{
+    -fx-font-size: 75px;
+    -fx-font-family: Algerian;}
+
