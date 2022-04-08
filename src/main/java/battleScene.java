@@ -124,7 +124,7 @@ public class battleScene extends SubScene {
         vBox.getChildren().add(battleBox);
 
         //setup buttons
-        Button attackBtn = new Button("click");
+        Button attackBtn = new Button("Attack!");
         attackBtn.setOnAction(e ->{
             if (whoseTurn == 1){
                 attack(stackPane,player);

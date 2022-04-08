@@ -165,30 +165,38 @@ public class testApp extends GameApplication {
                 dialogueDeath(player2);
                 if (level == 1) {
                     FXGL.setLevelFromMap("level1.tmx");
+                    player2 = FXGL.getGameWorld().getSingleton(testTypes.PLAYER);
                     levelSwap = true;
                 } else if (level == 2){
                     FXGL.setLevelFromMap("level2.tmx");
+                    player2 = FXGL.getGameWorld().getSingleton(testTypes.PLAYER);
                     levelSwap = true;
                 }else if (level == 3){
                     FXGL.setLevelFromMap("level3.tmx");
+                    player2 = FXGL.getGameWorld().getSingleton(testTypes.PLAYER);
                     levelSwap = true;
                 } else if (level == 4){
                     FXGL.setLevelFromMap("eindlevel.tmx");
+                    player2 = FXGL.getGameWorld().getSingleton(testTypes.PLAYER);
                     levelSwap = true;
                 }
             }else if (player.getComponent(HealthIntComponent.class).getValue() <= 0){
                 dialogueDeath(player);
                 if (level == 1){
                     FXGL.setLevelFromMap("level1.tmx");
+                    player = FXGL.getGameWorld().getSingleton(testTypes.PLAYER);
                     levelSwap = true;
                 } else if (level == 2){
                     FXGL.setLevelFromMap("level2.tmx");
+                    player = FXGL.getGameWorld().getSingleton(testTypes.PLAYER);
                     levelSwap = true;
                 }else if (level == 3){
                     FXGL.setLevelFromMap("level3.tmx");
+                    player = FXGL.getGameWorld().getSingleton(testTypes.PLAYER);
                     levelSwap = true;
                 } else if (level == 4){
                     FXGL.setLevelFromMap("eindlevel.tmx");
+                    player = FXGL.getGameWorld().getSingleton(testTypes.PLAYER);
                     levelSwap = true;
                 }
             }
@@ -197,15 +205,19 @@ public class testApp extends GameApplication {
                 dialogueDeath(player);
                 if (level == 1){
                     FXGL.setLevelFromMap("level1.tmx");
+                    player = FXGL.getGameWorld().getSingleton(testTypes.PLAYER);
                     levelSwap = true;
                 } else if (level == 2){
                     FXGL.setLevelFromMap("level2.tmx");
+                    player = FXGL.getGameWorld().getSingleton(testTypes.PLAYER);
                     levelSwap = true;
                 }else if (level == 3){
                     FXGL.setLevelFromMap("level3.tmx");
+                    player = FXGL.getGameWorld().getSingleton(testTypes.PLAYER);
                     levelSwap = true;
                 } else if (level == 4){
                     FXGL.setLevelFromMap("eindlevel.tmx");
+                    player = FXGL.getGameWorld().getSingleton(testTypes.PLAYER);
                     levelSwap = true;
                 }
             }
