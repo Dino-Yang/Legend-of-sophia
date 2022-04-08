@@ -4,12 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="935beec7-b7ce-41c4-973c-b429a1d7310b" name="Changes" comment="spellingsfoutjes">
+    <list default="true" id="935beec7-b7ce-41c4-973c-b429a1d7310b" name="Changes" comment="achtergrond foto toegevoegd">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/save.sav" beforeDir="false" afterPath="$PROJECT_DIR$/save.sav" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/MainMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/MainMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/testApp$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/testApp$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/testApp.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/testApp.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,6 +18,7 @@
       <list>
         <option value="Class" />
         <option value="Enum" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -36,6 +34,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="last_opened_file_path" value="$USER_HOME$/Downloads/openjdk-11+28_windows-x64_bin/jdk-11" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -51,6 +50,7 @@
       <recent name="C:\Users\rickl\OneDrive - Hogeschool Leiden\propedeuse\Github\sophia\src\main\resources\assets\textures" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\sophi\OneDrive\Documenten\GitHub\Legend-of-sophia\src\main\resources" />
       <recent name="C:\Users\Rick\OneDrive - Hogeschool Leiden\propedeuse\Github\sophia\src\main\resources\assets\levels" />
       <recent name="C:\Users\rickl\OneDrive - Hogeschool Leiden\propedeuse\Github\sophia\src\main\resources\assets\levels" />
     </key>
@@ -165,7 +165,21 @@
       <option name="project" value="LOCAL" />
       <updated>1649402986081</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="achtergrond foto van menu veranderd">
+      <created>1649404004410</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1649404004410</updated>
+    </task>
+    <task id="LOCAL-00011" summary="achtergrond foto toegevoegd">
+      <created>1649404175788</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1649404175788</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -190,6 +204,8 @@
     <MESSAGE value="Player naming, menus" />
     <MESSAGE value="menu style change" />
     <MESSAGE value="spellingsfoutjes" />
-    <option name="LAST_COMMIT_MESSAGE" value="spellingsfoutjes" />
+    <MESSAGE value="achtergrond foto van menu veranderd" />
+    <MESSAGE value="achtergrond foto toegevoegd" />
+    <option name="LAST_COMMIT_MESSAGE" value="achtergrond foto toegevoegd" />
   </component>
 </project>

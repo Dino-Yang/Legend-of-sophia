@@ -5,15 +5,11 @@ import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.control.TextFormatter;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
-
-import java.util.function.UnaryOperator;
-import java.util.regex.Pattern;
 
 
 public class MainMenu extends FXGLMenu {
@@ -46,6 +42,9 @@ public class MainMenu extends FXGLMenu {
         TextField naamInputDrie = new TextField();
         naamInputDrie.setMaxSize(250, 50);
         VBox namenMenuTwoPlayers = new VBox(2);
+        namenMenuTwoPlayers.getStylesheets().add(
+                getClass().getResource("test.css").toExternalForm());
+
         namenMenuTwoPlayers.getChildren().addAll(menuVierTitel, naamInputTwee, naamInputDrie, startingeButton);
         namenMenuTwoPlayers.setAlignment(Pos.CENTER);
         namenMenuTwoPlayers.setMinHeight(height);
@@ -66,6 +65,9 @@ public class MainMenu extends FXGLMenu {
         TextField naamInput = new TextField();
         naamInput.setMaxSize(250, 50);
         VBox namenMenuOnePlayer = new VBox(2);
+        namenMenuOnePlayer.getStylesheets().add(
+                getClass().getResource("test.css").toExternalForm());
+
         namenMenuOnePlayer.getChildren().addAll(menuDrieTitel, naamInput, startingButton);
         namenMenuOnePlayer.setAlignment(Pos.CENTER);
         namenMenuOnePlayer.setMinHeight(height);
@@ -83,12 +85,16 @@ public class MainMenu extends FXGLMenu {
 //        menu2
         Button onePlayer = new Button("1 Player");
         Button twoPlayer = new Button("2 Players");
-        Label menuTweeTitel = new Label("How many players will you be playing with?");
+        Label menuTweeTitel = new Label("How many players will you " +
+                "\n be playing with?");
         Region spacer2 = new Region();
         onePlayer.setMinSize(150, 100);
         twoPlayer.setMinSize(150, 100);
 
         VBox playersMenu = new VBox(2);
+        playersMenu.getStylesheets().add(
+                getClass().getResource("test.css").toExternalForm());
+
         playersMenu.setSpacing(20);
         playersMenu.getChildren().addAll(menuTweeTitel, onePlayer, twoPlayer, spacer2);
         playersMenu.setAlignment(Pos.CENTER);
@@ -105,19 +111,29 @@ public class MainMenu extends FXGLMenu {
         });
 
         //        menu 1
+
+
+
+
+        VBox mainMenu = new VBox(2);
+        mainMenu.getStylesheets().add(
+                getClass().getResource("test.css").toExternalForm());
         Region spacer = new Region();
+        Label titel2 = new Label("The Legend of Sophia");
         Button exitButton = new Button("Exit");
         Button startButton = new Button("Start");
 
-        startButton.setMinSize(150, 100);
-//        startButton.setStyle("-fx-background-color: #1a2739");
-        exitButton.setMinSize(150, 100);
-//        exitButton.setStyle("-fx-background-color: #1a2739");
 
-        VBox mainMenu = new VBox(2);
+        startButton.setMinSize(100, 80);
+//        startButton.setStyle("-fx-background-insets: 0");
+//
+//        startButton.setStyle("-fx-border-color: #000");
+//        startButton.setStyle("-fx-border-width: 10");
+        exitButton.setMinSize(100, 80);
+
         mainMenu.setSpacing(20);
         mainMenu.setBackground(new Background(mainBackground));
-        mainMenu.getChildren().addAll(startButton, exitButton, spacer);
+        mainMenu.getChildren().addAll(titel2, startButton, exitButton, spacer);
         getContentRoot().getChildren().add(mainMenu);
 
         mainMenu.setAlignment(Pos.CENTER);
