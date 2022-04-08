@@ -1,9 +1,12 @@
 import com.almasb.fxgl.app.GameApplication;
 import com.almasb.fxgl.app.GameSettings;
+import com.almasb.fxgl.core.serialization.Bundle;
 import com.almasb.fxgl.dsl.FXGL;
 import com.almasb.fxgl.dsl.components.HealthIntComponent;
 import com.almasb.fxgl.entity.Entity;
 import com.almasb.fxgl.physics.CollisionHandler;
+import com.almasb.fxgl.profile.DataFile;
+import com.almasb.fxgl.profile.SaveLoadHandler;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -11,6 +14,7 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
+import javafx.util.Pair;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,7 +36,7 @@ public class testApp extends GameApplication {
     private int height = 720;
     public boolean levelSwap = false;
     public static boolean twoPlayers = true;
-    
+    ArrayList<Pair<String,Integer>> scorenLijst = new ArrayList<>();
     public int level =1;
     public Text textPixels = new Text();
     ArrayList<potion> list;
@@ -373,7 +377,50 @@ public class testApp extends GameApplication {
     }
 
 
+    @Override
+    protected void onPreInit() {
+        FXGL.getSaveLoadService().addHandler(new SaveLoadHandler() {
+            @Override
+            public void onSave(DataFile data) {
+                var bundle = new Bundle("gameData");
+                // store some data
+                String playerName = player.getComponent(playerComponent.class).naam;
+                int playerScore = player.getComponent(playerComponent.class).Score;
+                if (twoPlayers){
+                    String player2Name = player2.getComponent(playerComponent.class).naam;
+                    int player2Score = player2.getComponent(playerComponent.class).Score;
+                    Pair<String, Integer> player2pair= new Pair<>(player2Name,player2Score);
+                    scorenLijst.add(player2pair);
+//                    Pair2 player2Pair = new Pair2(player2Name,player2Score);
+
+                }
+                Pair<String, Integer> playerPair= new Pair<>(playerName,playerScore);
+                scorenLijst.add(playerPair);
+                bundle.put("lijst", scorenLijst);
+                System.out.println("save");
+//                list.forEach(System.out::println);
+
+                // give the bundle to data file
+                data.putBundle(bundle);
+            }
+
+            @Override
+            public void onLoad(DataFile data) {
+                // get your previously saved bundle
+                var bundle = data.getBundle("gameData");
+                ArrayList<Pair<String,Integer>> oldList = bundle.get("lijst");
+                System.out.println("load");
+//                oldList.forEach(System.out::println);
+                scorenLijst.addAll(oldList);
+//                scorenLijst.forEach(System.out::println);
+            }
+        });
+    }
+
     public void dialogueLevel1(){
+        FXGL.getSaveLoadService().saveAndWriteTask("save.sav").run();
+        FXGL.getSaveLoadService().readAndLoadTask("save.sav").run();
+        FXGL.getSaveLoadService().saveAndWriteTask("save.sav").run();
         VBox content = new VBox(
                 FXGL.getAssetLoader().loadTexture("heiko.png"),
                 FXGL.getUIFactoryService().newText("Hello there brave adventurerer, my name Heiko. Whats your name?"),
